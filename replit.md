@@ -7,6 +7,9 @@ Training Club is a personalized fitness web application that provides users with
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
+Footer attribution: "© 2023 Training Club. All rights reserved. and designed by mustafa" with link to https://linktr.ee/Mustafa_Bemo
+Performance requirements: Fast loading pages with optimized layout
+Layout requirements: No overlapping elements, clean responsive design
 
 ## System Architecture
 
@@ -96,6 +99,13 @@ Preferred communication style: Simple, everyday language.
 - **In-memory Storage**: Data doesn't persist between deployments
 - **No Database**: Limited to session-based data storage
 - **Single User Session**: No multi-user authentication system
+
+### Recent Performance Optimizations (July 28, 2025)
+- **Layout Fixes**: Fixed overlapping elements on plan page with proper CSS grid layout
+- **Loading Performance**: Added resource preloading for faster page loading
+- **Responsive Design**: Enhanced mobile layout with proper spacing and grid adjustments
+- **Footer Attribution**: Updated footer with proper attribution and link to designer's profile
+- **CSS Optimization**: Added comprehensive plan page styles for better visual structure
 
 ### Future Enhancements Ready
 - **Database Integration**: Architecture supports easy database addition (PostgreSQL recommended)

@@ -472,6 +472,268 @@ header p {
     margin-top: 10px;
 }
 
+/* Plan Layout */
+.plan-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.plan-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.plan-card:hover {
+    transform: translateY(-5px);
+}
+
+.plan-header {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.plan-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.plan-status {
+    margin-top: 10px;
+    opacity: 0.9;
+    font-size: 0.9rem;
+}
+
+.plan-body {
+    padding: 25px;
+}
+
+.plan-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.plan-feature:last-child {
+    margin-bottom: 0;
+}
+
+.plan-feature .feature-icon {
+    font-size: 1.5rem;
+    margin: 0;
+    min-width: 35px;
+}
+
+.plan-feature .feature-text h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.1rem;
+    color: var(--dark);
+}
+
+.plan-feature .feature-text p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Progress Container */
+.progress-container {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    margin: 30px 0;
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.progress-header h2 {
+    margin: 0;
+    color: var(--primary);
+}
+
+.progress-summary {
+    display: flex;
+    gap: 20px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.progress-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.progress-stat {
+    text-align: center;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.progress-stat-value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 5px;
+}
+
+.progress-stat-label {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* BMI Container */
+.bmi-container {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    margin: 30px 0;
+}
+
+.bmi-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.bmi-header h2 {
+    margin: 0;
+    color: var(--primary);
+}
+
+.bmi-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.bmi-scale {
+    height: 20px;
+    background: linear-gradient(to right, #3498db, #2ecc71, #f39c12, #e74c3c);
+    border-radius: 10px;
+    margin: 20px 0;
+    position: relative;
+}
+
+.bmi-marker {
+    position: absolute;
+    top: -5px;
+    width: 10px;
+    height: 30px;
+    background: white;
+    border: 2px solid var(--dark);
+    border-radius: 5px;
+    transform: translateX(-50%);
+}
+
+.bmi-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.bmi-info {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+}
+
+/* Reminder Banner */
+.reminder-banner {
+    background: linear-gradient(135deg, #ff9800, #ff5722);
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    animation: pulse 2s infinite;
+}
+
+.reminder-icon {
+    font-size: 2rem;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+/* Quick Actions */
+.quick-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.emergency-section {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 30px 0;
+    text-align: center;
+}
+
+.emergency-section h3 {
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+.emergency-section > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Workout and Nutrition Containers */
+.workout-container,
+.nutrition-container {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 30px 0;
+    overflow: hidden;
+}
+
+.workout-container h2,
+.nutrition-container h2 {
+    background: var(--primary);
+    color: white;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+.workout-container > div:not(:first-child),
+.nutrition-container > div:not(:first-child) {
+    padding: 25px;
+}
+
 /* Forms */
 .profile-form {
     background: white;
@@ -737,6 +999,55 @@ footer {
     header {
         flex-direction: column;
         gap: 10px;
+    }
+    
+    /* Plan page responsive fixes */
+    .plan-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .progress-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .quick-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .quick-actions .btn {
+        width: 100%;
+        max-width: 280px;
+        margin: 5px 0;
+    }
+    
+    .emergency-section > div {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .emergency-section .btn {
+        width: 100%;
+        max-width: 200px;
+        margin: 5px 0;
+    }
+    
+    .bmi-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .progress-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .progress-summary {
+        justify-content: center;
     }
 }
 
