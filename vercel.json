@@ -12,10 +12,7 @@
   "routes": [
     {
       "src": "/static/(.*)",
-      "dest": "/static/$1",
-      "headers": {
-        "cache-control": "public, max-age=31536000, immutable"
-      }
+      "dest": "/static/$1"
     },
     {
       "src": "/api/(.*)",
@@ -23,44 +20,15 @@
     },
     {
       "src": "/(index\\.html|profile\\.html|plan\\.html)",
-      "dest": "/$1",
-      "headers": {
-        "cache-control": "public, max-age=0, must-revalidate"
-      }
+      "dest": "/$1"
     },
     {
       "src": "/(.*\\.(css|js|ico|png|jpg|jpeg|gif|svg|json))",
-      "dest": "/$1",
-      "headers": {
-        "cache-control": "public, max-age=86400"
-      }
+      "dest": "/$1"
     },
     {
       "src": "/(.*)",
       "dest": "/app.py"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        }
-      ]
     }
   ]
 }
