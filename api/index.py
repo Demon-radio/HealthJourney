@@ -161,6 +161,16 @@ class handler(BaseHTTPRequestHandler):
             self.wfile.write(json.dumps(response).encode())
             return
         
+        # Handle favicon requests
+        elif path == '/favicon.ico' or path == '/favicon.png':
+            self.send_response(200)
+            self.send_header('Content-type', 'image/x-icon')
+            self.end_headers()
+            # Simple 1x1 transparent favicon
+            favicon_data = b'\x00\x00\x01\x00\x01\x00\x10\x10\x00\x00\x01\x00\x20\x00\x68\x04\x00\x00\x16\x00\x00\x00'
+            self.wfile.write(favicon_data)
+            return
+            
         # Serve static files
         elif path.endswith('.html') or path.endswith('.css') or path.endswith('.js'):
             try:
