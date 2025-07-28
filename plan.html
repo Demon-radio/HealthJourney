@@ -5,14 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Training Plan | Training Club</title>
     <link rel="stylesheet" href="static/css/styles.css">
-    <link rel="preload" href="static/js/main.js" as="script">
-    <link rel="preload" href="static/js/plan.js" as="script">
-    <link rel="preconnect" href="https://linktr.ee" crossorigin>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏋️</text></svg>">
 </head>
 <body>
     <div class="notification-center" id="notificationCenter"></div>
-    <div class="modal" id="confirmModal" style="display: none;"></div>
     
     <header>
         <div class="container">
@@ -80,116 +76,86 @@
             </div>
             <div class="bmi-category" id="bmiCategory">
                 <h3>Category: <span id="categoryText">--</span></h3>
-                <p id="bmiRecommendation">Focus on healthy weight gain through balanced nutrition and strength training.</p>
+                <p id="bmiRecommendation">Loading recommendations...</p>
             </div>
         </div>
 
-        <!-- Workout Time Banner -->
-        <div class="reminder-banner" id="workoutTimeBanner" style="display: none;">
-            <div class="reminder-icon">⏰</div>
-            <div>
-                <strong>Workout Time Reminder</strong>
-                <p>Your scheduled workout time is approaching. Ready to get stronger?</p>
-            </div>
-        </div>
-
-        <!-- Main Plan Container -->
-        <div class="plan-container">
-            <!-- Workout Plan Card -->
-            <div class="plan-card">
-                <div class="plan-header">
-                    <h2>🏋️ Workout Plan</h2>
-                    <div class="plan-status" id="workoutStatus">Loading...</div>
+        <!-- Workout Plan Overview -->
+        <div class="plan-overview">
+            <div class="overview-card">
+                <div class="overview-icon">🏋️</div>
+                <div class="overview-content">
+                    <h3>Workout Plan</h3>
+                    <p>Ready for your personalized 30-day fitness journey</p>
                 </div>
-                <div class="plan-body">
-                    <div class="plan-feature">
-                        <div class="feature-icon">💪</div>
-                        <div class="feature-text">
-                            <h3>Progressive Training</h3>
+                <div class="overview-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">💪</span>
+                        <div>
+                            <strong>Progressive Training</strong>
                             <p>Starts with 14 exercises, increases difficulty every 2 days</p>
                         </div>
                     </div>
-                    <div class="plan-feature">
-                        <div class="feature-icon">⏱️</div>
-                        <div class="feature-text">
-                            <h3>Time Tracking</h3>
+                    <div class="feature-item">
+                        <span class="feature-icon">⏱️</span>
+                        <div>
+                            <strong>Time Tracking</strong>
                             <p>Real-time calorie burn calculation based on duration</p>
                         </div>
                     </div>
-                    <div class="plan-feature">
-                        <div class="feature-icon">📈</div>
-                        <div class="feature-text">
-                            <h3>Progress Monitoring</h3>
+                    <div class="feature-item">
+                        <span class="feature-icon">📈</span>
+                        <div>
+                            <strong>Progress Monitoring</strong>
                             <p>Visual progress tracking with day completion markers</p>
                         </div>
                     </div>
-                    <div class="plan-feature">
-                        <div class="feature-icon">🎯</div>
-                        <div class="feature-text">
-                            <h3>Goal-Oriented</h3>
+                    <div class="feature-item">
+                        <span class="feature-icon">🎯</span>
+                        <div>
+                            <strong>Goal-Oriented</strong>
                             <p>Exercises tailored to your specific fitness goals</p>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Nutrition Plan Card -->
-            <div class="plan-card">
-                <div class="plan-header">
-                    <h2>🥗 Nutrition Plan</h2>
-                    <div class="plan-status" id="nutritionStatus">Loading...</div>
+            
+            <div class="overview-card">
+                <div class="overview-icon">🥗</div>
+                <div class="overview-content">
+                    <h3>Nutrition Plan</h3>
+                    <p>Personalized meal plans designed for your goals</p>
                 </div>
-                <div class="plan-body">
-                    <div class="plan-feature">
-                        <div class="feature-icon">💎</div>
-                        <div class="feature-text">
-                            <h3>3-Tier System</h3>
+                <div class="overview-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">💎</span>
+                        <div>
+                            <strong>3-Tier System</strong>
                             <p>Choose from Basic, Medium, or Premium meal plans</p>
                         </div>
                     </div>
-                    <div class="plan-feature">
-                        <div class="feature-icon">🔢</div>
-                        <div class="feature-text">
-                            <h3>Calorie Calculation</h3>
+                    <div class="feature-item">
+                        <span class="feature-icon">🔢</span>
+                        <div>
+                            <strong>Calorie Calculation</strong>
                             <p>Precise daily calorie needs based on your BMR and goals</p>
                         </div>
                     </div>
-                    <div class="plan-feature">
-                        <div class="feature-icon">🍽️</div>
-                        <div class="feature-text">
-                            <h3>Complete Meals</h3>
+                    <div class="feature-item">
+                        <span class="feature-icon">🍽️</span>
+                        <div>
+                            <strong>Complete Meals</strong>
                             <p>Breakfast, lunch, dinner, and snack options with instructions</p>
                         </div>
                     </div>
-                    <div class="plan-feature">
-                        <div class="feature-icon">💰</div>
-                        <div class="feature-text">
-                            <h3>Budget-Friendly</h3>
+                    <div class="feature-item">
+                        <span class="feature-icon">💰</span>
+                        <div>
+                            <strong>Budget-Friendly</strong>
                             <p>Plans designed to fit your economic preferences</p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- Progress Overview -->
-        <div class="progress-container" id="progressOverview">
-            <div class="progress-header">
-                <h2>📊 Your Progress</h2>
-                <div class="progress-summary">
-                    <span id="currentDayDisplay">Day 1</span>
-                    <span id="streakDisplay">0 day streak</span>
-                </div>
-            </div>
-            
-            <!-- Progress Stats -->
-            <div class="progress-stats" id="progressStatsContainer">
-                <!-- Will be populated by JavaScript -->
-            </div>
-
-            <!-- Progress Days Grid -->
-            <div class="progress-days" id="progressDays">
-                <!-- Will be populated by JavaScript -->
             </div>
         </div>
 
@@ -293,310 +259,83 @@
             </div>
         </div>
 
-        <!-- Quick Actions -->
-        <div class="quick-actions" style="margin: 30px 0; text-align: center;">
-            <button class="btn btn-success" onclick="startTodaysWorkout()" id="startWorkoutBtn">
-                🏃‍♂️ Start Today's Workout
-            </button>
-            <button class="btn btn-secondary" onclick="viewNutritionPlan()" style="margin-left: 15px;">
-                🥗 View Nutrition Plan
-            </button>
-            <button class="btn" onclick="updateProfile()" style="margin-left: 15px;">
-                ⚙️ Update Profile
-            </button>
-        </div>
-
-        <!-- Emergency/Quick Links -->
-        <div class="emergency-section" style="background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); margin: 20px 0;">
-            <h3 style="color: var(--primary); margin-bottom: 15px;">🚨 Quick Access</h3>
-            <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
-                <button class="btn btn-warning" onclick="skipTodaysWorkout()">Skip Today</button>
-                <button class="btn btn-secondary" onclick="changeWorkoutTime()">Change Time</button>
-                <button class="btn" onclick="restartCurrentDay()">Restart Day</button>
-                <button class="btn btn-secondary" onclick="viewProgress()">View Stats</button>
+        <!-- Emergency Contact Section -->
+        <div class="emergency-section">
+            <h3>🚨 Quick Access</h3>
+            <div>
+                <a href="tel:911" class="btn btn-danger">Emergency: 911</a>
+                <a href="tel:211" class="btn btn-warning">Health Info: 211</a>
+                <a href="#" class="btn btn-info" onclick="app.showNotification('Help', 'Contact support for assistance with the app.', 'info')">App Support</a>
             </div>
         </div>
     </div>
     
     <footer>
         <div class="container">
-            <p>&copy; 2023 Training Club. All rights reserved. and designed by <a href="https://linktr.ee/Mustafa_Bemo" target="_blank" style="color: var(--primary); text-decoration: none;">mustafa</a></p>
-            <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">
+            <p>&copy; 2023 Training Club. All rights reserved. designed by <a href="https://linktr.ee/Mustafa_Bemo" target="_blank" style="color: var(--primary); text-decoration: none;">mustafa</a></p>
+            <div class="footer-tagline">
                 Progressive workouts • Smart nutrition • Real-time tracking
-            </p>
+            </div>
         </div>
     </footer>
 
-    <script src="static/js/main.js"></script>
-    <script src="static/js/plan.js"></script>
-    
+    <script src="static/js/arabic.js"></script>
+    <script src="static/js/app.js"></script>
     <script>
-        // Additional plan-specific functionality
-        
-        function logout() {
-            ModalSystem.show(
-                'Confirm Logout',
-                'Are you sure you want to log out? Your progress will be saved.',
-                [
-                    { text: 'Yes, Logout', type: 'danger' },
-                    { text: 'Cancel', type: 'secondary' }
-                ]
-            ).then(result => {
-                if (result === 0) {
-                    // Clear user data but keep progress
-                    const progress = {
-                        exerciseProgress: Utils.loadFromStorage('exerciseProgress'),
-                        dailyProgress: Utils.loadFromStorage('dailyProgress'),
-                        lastWorkoutDate: Utils.loadFromStorage('lastWorkoutDate')
-                    };
-                    
-                    localStorage.clear();
-                    
-                    // Restore just the progress data
-                    if (progress.exerciseProgress) Utils.saveToStorage('exerciseProgress', progress.exerciseProgress);
-                    if (progress.dailyProgress) Utils.saveToStorage('dailyProgress', progress.dailyProgress);
-                    if (progress.lastWorkoutDate) Utils.saveToStorage('lastWorkoutDate', progress.lastWorkoutDate);
-                    
-                    NotificationSystem.show('Logged Out', 'Your progress has been saved.', 'success');
-                    setTimeout(() => {
-                        window.location.href = 'index.html';
-                    }, 2000);
-                }
-            });
-        }
-        
-        function startTodaysWorkout() {
-            const workoutContainer = document.getElementById('workoutContainer');
-            if (workoutContainer) {
-                workoutContainer.scrollIntoView({ behavior: 'smooth' });
-                
-                // Check if it's workout time
-                const userData = Utils.loadFromStorage('userData');
-                if (userData && userData.preferredTime) {
-                    const now = new Date();
-                    const currentTime = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
-                    
-                    if (currentTime !== userData.preferredTime && !Utils.isWorkoutTime(userData.preferredTime)) {
-                        ModalSystem.show(
-                            'Different Time Detected',
-                            `Your preferred workout time is ${userData.preferredTime}, but it's currently ${currentTime}. Do you want to start now anyway?`,
-                            [
-                                { text: 'Yes, Start Now', type: 'success' },
-                                { text: 'Update My Time', type: 'primary' },
-                                { text: 'Wait for My Time', type: 'secondary' }
-                            ]
-                        ).then(result => {
-                            if (result === 0) {
-                                NotificationSystem.show('Workout Started', 'Great! Let\'s begin your training session.', 'success');
-                            } else if (result === 1) {
-                                changeWorkoutTime();
-                            } else {
-                                NotificationSystem.show('Reminder Set', `We'll remind you at ${userData.preferredTime}.`, 'info');
-                            }
-                        });
-                        return;
-                    }
-                }
-                
-                NotificationSystem.show('Workout Started', 'Great! Let\'s begin your training session.', 'success');
-            } else {
-                NotificationSystem.show('Loading...', 'Please wait while we load your workout plan.', 'info');
-            }
-        }
-        
-        function viewNutritionPlan() {
-            const nutritionContainer = document.getElementById('nutritionContainer');
-            if (nutritionContainer) {
-                nutritionContainer.scrollIntoView({ behavior: 'smooth' });
-                NotificationSystem.show('Nutrition Plan', 'Here\'s your personalized meal plan.', 'info');
-            }
-        }
-        
-        function updateProfile() {
-            ModalSystem.show(
-                'Update Profile',
-                'Do you want to update your profile information? This will recalculate your personalized plan.',
-                [
-                    { text: 'Yes, Update', type: 'primary' },
-                    { text: 'Cancel', type: 'secondary' }
-                ]
-            ).then(result => {
-                if (result === 0) {
-                    window.location.href = 'profile.html';
-                }
-            });
-        }
-        
-        function skipTodaysWorkout() {
-            ModalSystem.show(
-                'Skip Today\'s Workout?',
-                'Are you sure you want to skip today\'s workout? This will break your streak but you can restart tomorrow.',
-                [
-                    { text: 'Yes, Skip Today', type: 'warning' },
-                    { text: 'No, Keep Going', type: 'success' }
-                ]
-            ).then(result => {
-                if (result === 0) {
-                    // Record skip and move to next day
-                    const userData = Utils.loadFromStorage('userData');
-                    if (userData && currentWorkoutData) {
-                        API.completeDay(userData.user_id, currentWorkoutData.current_day).then(() => {
-                            NotificationSystem.show('Day Skipped', 'Tomorrow is a new opportunity to get stronger!', 'warning');
-                            // Reload the page to show next day
-                            setTimeout(() => location.reload(), 2000);
-                        });
-                    }
-                }
-            });
-        }
-        
-        function restartCurrentDay() {
-            ModalSystem.show(
-                'Restart Current Day?',
-                'This will reset all progress for today and let you start fresh. Are you sure?',
-                [
-                    { text: 'Yes, Restart', type: 'primary' },
-                    { text: 'Cancel', type: 'secondary' }
-                ]
-            ).then(result => {
-                if (result === 0) {
-                    // Clear today's progress
-                    const userData = Utils.loadFromStorage('userData');
-                    if (userData && currentWorkoutData) {
-                        // Reset exercise progress for current day
-                        const exerciseProgress = Utils.loadFromStorage('exerciseProgress') || {};
-                        currentWorkoutData.exercises.forEach(exercise => {
-                            delete exerciseProgress[exercise.id];
-                        });
-                        Utils.saveToStorage('exerciseProgress', exerciseProgress);
-                        
-                        NotificationSystem.show('Day Restarted', 'Your current day has been reset. Ready for a fresh start!', 'success');
-                        setTimeout(() => location.reload(), 2000);
-                    }
-                }
-            });
-        }
-        
-        function viewProgress() {
-            const progressContainer = document.getElementById('progressOverview');
-            if (progressContainer) {
-                progressContainer.scrollIntoView({ behavior: 'smooth' });
-                
-                // Show detailed progress info
-                const userData = Utils.loadFromStorage('userData');
-                const dailyProgress = Utils.loadFromStorage('dailyProgress') || {};
-                const completedDays = Object.keys(dailyProgress).length;
-                
-                NotificationSystem.show(
-                    '📊 Your Progress',
-                    `You've completed ${completedDays} days so far. Keep up the great work!`,
-                    'info'
-                );
-            }
-        }
-        
-        // Enhanced BMI display function
-        function updateBMIDisplay(userData) {
-            if (!userData.bmi) return;
-            
-            const bmiValue = document.getElementById('bmiValue');
-            const bmiMarker = document.getElementById('bmiMarker');
-            const bmiInfo = document.getElementById('bmiInfo');
-            
-            if (bmiValue) bmiValue.textContent = userData.bmi;
-            
-            // Calculate marker position (BMI scale roughly 15-35)
-            const minBMI = 15;
-            const maxBMI = 35;
-            const position = Math.min(Math.max((userData.bmi - minBMI) / (maxBMI - minBMI) * 100, 0), 100);
-            
-            if (bmiMarker) {
-                bmiMarker.style.left = `${position}%`;
-            }
-            
-            // Get BMI category and advice
-            const category = Utils.getBMICategory(userData.bmi);
-            
-            if (bmiInfo) {
-                bmiInfo.innerHTML = `
-                    <p><strong>Category:</strong> <span style="color: ${category.color}">${category.category}</span></p>
-                    <p><strong>Recommendation:</strong> ${getBMIAdvice(userData.bmi, userData.goal)}</p>
-                `;
-            }
-        }
-        
-        function getBMIAdvice(bmi, goal) {
-            if (bmi < 18.5) {
-                return goal === 'muscleGain' ? 
-                    'Focus on strength training and increased caloric intake to build healthy muscle mass.' :
-                    'Consider consulting a healthcare provider about healthy weight gain strategies.';
-            } else if (bmi < 25) {
-                return 'You\'re in the healthy range! Maintain your current lifestyle with regular exercise and balanced nutrition.';
-            } else if (bmi < 30) {
-                return goal === 'weightLoss' ? 
-                    'Your workout plan is perfectly designed to help you reach a healthier weight range.' :
-                    'Consider incorporating more cardio exercises and reviewing your nutrition plan.';
-            } else {
-                return 'Focus on gradual weight loss through consistent exercise and nutrition. Consider consulting a healthcare provider.';
-            }
-        }
-        
-        // Workout time monitoring
-        function monitorWorkoutTime() {
-            const userData = Utils.loadFromStorage('userData');
-            if (!userData || !userData.preferredTime) return;
-            
-            const now = new Date();
-            const [hours, minutes] = userData.preferredTime.split(':').map(Number);
-            const workoutTime = new Date();
-            workoutTime.setHours(hours, minutes, 0, 0);
-            
-            const timeDiff = Math.abs(now - workoutTime);
-            const isWorkoutTime = timeDiff <= 30 * 60 * 1000; // Within 30 minutes
-            
-            const banner = document.getElementById('workoutTimeBanner');
-            if (banner) {
-                banner.style.display = isWorkoutTime ? 'flex' : 'none';
-            }
-            
-            // Show notification if it's workout time and user hasn't worked out today
-            const lastWorkout = Utils.loadFromStorage('lastWorkoutDate');
-            const today = new Date().toDateString();
-            
-            if (isWorkoutTime && lastWorkout !== today) {
-                NotificationSystem.show(
-                    '⏰ Workout Time!',
-                    'It\'s your scheduled workout time. Ready to get stronger?',
-                    'warning',
-                    [
-                        { text: 'Start Now', type: 'success', onclick: 'startTodaysWorkout()' },
-                        { text: 'Later', type: 'secondary', onclick: 'NotificationSystem.clear()' }
-                    ]
-                );
-            }
-        }
-        
-        // Enhanced initialization
+        // Initialize BMI display when page loads
         document.addEventListener('DOMContentLoaded', function() {
-            // Monitor workout time every minute
-            monitorWorkoutTime();
-            setInterval(monitorWorkoutTime, 60000);
-            
-            // Update BMI display when user data is loaded
-            const userData = Utils.loadFromStorage('userData');
-            if (userData) {
-                updateBMIDisplay(userData);
-            }
+            setTimeout(() => {
+                if (app && app.currentUser && app.currentUser.bmi) {
+                    updateBMIDisplay(app.currentUser.bmi);
+                }
+            }, 1000);
         });
         
-        // Make functions globally available for onclick handlers
-        window.logout = logout;
-        window.startTodaysWorkout = startTodaysWorkout;
-        window.viewNutritionPlan = viewNutritionPlan;
-        window.updateProfile = updateProfile;
-        window.skipTodaysWorkout = skipTodaysWorkout;
-        window.restartCurrentDay = restartCurrentDay;
-        window.viewProgress = viewProgress;
+        function updateBMIDisplay(bmi) {
+            const bmiValue = document.getElementById('bmiValue');
+            const bmiMarker = document.getElementById('bmiMarker');
+            const categoryText = document.getElementById('categoryText');
+            const bmiRecommendation = document.getElementById('bmiRecommendation');
+            
+            if (bmiValue) bmiValue.textContent = bmi;
+            
+            let category, color, recommendation, position;
+            
+            if (bmi < 18.5) {
+                category = 'Underweight';
+                color = '#ff9800';
+                recommendation = 'Focus on healthy weight gain through balanced nutrition and strength training.';
+                position = '10%';
+            } else if (bmi < 25) {
+                category = 'Normal';
+                color = '#4caf50';
+                recommendation = 'Maintain your healthy weight through regular exercise and balanced nutrition.';
+                position = '35%';
+            } else if (bmi < 30) {
+                category = 'Overweight';
+                color = '#ff9800';
+                recommendation = 'Focus on gradual weight loss through consistent exercise and nutrition.';
+                position = '65%';
+            } else {
+                category = 'Obese';
+                color = '#f44336';
+                recommendation = 'Focus on gradual weight loss through consistent exercise and nutrition. Consider consulting a healthcare provider.';
+                position = '85%';
+            }
+            
+            if (categoryText) categoryText.textContent = category;
+            if (bmiRecommendation) bmiRecommendation.textContent = recommendation;
+            if (bmiMarker) {
+                bmiMarker.style.left = position;
+                bmiMarker.style.backgroundColor = color;
+            }
+            
+            // Update category color
+            const categoryElement = document.getElementById('categoryText');
+            if (categoryElement) {
+                categoryElement.style.color = color;
+            }
+        }
     </script>
 </body>
 </html>
