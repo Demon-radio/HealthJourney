@@ -4,351 +4,351 @@
       "id": 1,
       "name": "Push-ups",
       "level": "beginner",
-      "gender": "both",
-      "goal": "general",
-      "duration": 120,
-      "met_value": 8.0,
+      "duration": 90,
+      "goal": "muscleGain",
+      "met_value": 4.0,
+      "category": "chest",
       "instructions": {
         "male": [
-          "Start in plank position with hands shoulder-width apart",
-          "Lower your body until chest nearly touches the floor",
-          "Push back up to starting position",
-          "Keep core tight throughout movement"
+          "بدء في وضع البلانك مع اليدين تحت الكتفين",
+          "اخفض الجسم حتى يلمس الصدر الأرض",
+          "ادفع الجسم لأعلى للعودة للوضع الأولي",
+          "حافظ على الجسم مستقيماً طوال الوقت"
         ],
         "female": [
-          "Start in plank position or modified knee position",
-          "Lower your body until chest nearly touches the floor",
-          "Push back up to starting position",
-          "Keep core engaged and back straight"
+          "ابدئي من وضع البلانك أو على الركبتين للمبتدئات",
+          "اخفضي الجسم ببطء",
+          "ادفعي الجسم لأعلى بقوة الذراعين",
+          "حافظي على خط مستقيم من الرأس للقدمين"
         ]
       },
-      "tips": "Keep your body in a straight line from head to heels",
-      "video_description": "Full body push-up demonstration with proper form"
+      "tips": "ابدأ بـ 10 عدات وزِد تدريجياً",
+      "emoji": "💪"
     },
     {
       "id": 2,
       "name": "Squats",
       "level": "beginner",
-      "gender": "both",
-      "goal": "general",
-      "duration": 180,
-      "met_value": 6.0,
+      "duration": 120,
+      "goal": "toning",
+      "met_value": 5.0,
+      "category": "legs",
       "instructions": {
         "male": [
-          "Stand with feet shoulder-width apart",
-          "Lower down as if sitting in a chair",
-          "Keep knees behind toes",
-          "Return to standing position"
+          "قف مع المباعدة بين القدمين بعرض الكتفين",
+          "انزل كأنك تجلس على كرسي",
+          "حافظ على استقامة الظهر",
+          "انهض بدفع الكعبين في الأرض"
         ],
         "female": [
-          "Stand with feet hip-width apart",
-          "Lower down keeping weight in heels",
-          "Keep chest up and core engaged",
-          "Push through heels to stand"
+          "قفي مع المباعدة بين القدمين",
+          "انزلي ببطء كأنك تجلسين",
+          "حافظي على الركبتين خلف أصابع القدمين",
+          "انهضي بقوة عضلات الأرداف"
         ]
       },
-      "tips": "Keep your chest up and avoid letting knees cave inward",
-      "video_description": "Perfect squat form with depth and alignment cues"
+      "tips": "لا تدعي ركبتيك تنحنيان للداخل",
+      "emoji": "🦵"
     },
     {
       "id": 3,
       "name": "Plank",
-      "level": "beginner",
-      "gender": "both",
-      "goal": "general",
+      "level": "intermediate",
       "duration": 60,
-      "met_value": 4.0,
+      "goal": "toning",
+      "met_value": 3.8,
+      "category": "core",
       "instructions": {
         "male": [
-          "Start in push-up position",
-          "Hold body in straight line",
-          "Engage core muscles",
-          "Breathe normally"
+          "ابدأ في وضع البلانك على المرفقين",
+          "حافظ على الجسم مستقيماً كالخشبة",
+          "شد عضلات البطن والأرداف",
+          "تنفس بانتظام"
         ],
         "female": [
-          "Start in forearm plank position",
-          "Keep hips level with shoulders",
-          "Engage core and glutes",
-          "Hold steady breathing"
+          "استلقي على البطن ثم ارتفعي على المرفقين",
+          "حافظي على خط مستقيم",
+          "شدي عضلات البطن",
+          "ابدئي بـ 30 ثانية"
         ]
       },
-      "tips": "Don't let hips sag or pike up too high",
-      "video_description": "Static plank hold with proper alignment"
+      "tips": "لا تدعي الوركين يرتفعان أو ينخفضان",
+      "emoji": "🏋️"
     },
     {
       "id": 4,
       "name": "Lunges",
-      "level": "beginner",
-      "gender": "both",
-      "goal": "general",
-      "duration": 150,
-      "met_value": 7.0,
+      "level": "intermediate",
+      "duration": 120,
+      "goal": "toning",
+      "met_value": 4.5,
+      "category": "legs",
       "instructions": {
         "male": [
-          "Step forward into lunge position",
-          "Lower back knee toward ground",
-          "Keep front knee over ankle",
-          "Push back to starting position"
+          "قف منتصباً مع القدمين متجاورتين",
+          "اتخذ خطوة كبيرة للأمام",
+          "اخفض الجسم حتى تشكل الركبتان زاوية 90 درجة",
+          "ادفع بالقدم الأمامية للعودة"
         ],
         "female": [
-          "Step forward with control",
-          "Lower into lunge keeping torso upright",
-          "Ensure front knee stays aligned",
-          "Push through front heel to return"
+          "قفي منتصبة وضعي يديك على الوركين",
+          "اتخذي خطوة للأمام",
+          "انزلي ببطء حتى تلمس الركبة الخلفية الأرض تقريباً",
+          "ارجعي للوضع الأولي"
         ]
       },
-      "tips": "Keep most of your weight on your front leg",
-      "video_description": "Forward lunges with proper knee alignment"
+      "tips": "حافظي على استقامة الجذع ولا تميلي للأمام",
+      "emoji": "🚶"
     },
     {
       "id": 5,
-      "name": "Mountain Climbers",
-      "level": "beginner",
-      "gender": "both",
-      "goal": "general",
+      "name": "Burpees",
+      "level": "advanced",
       "duration": 90,
-      "met_value": 9.0,
+      "goal": "weightLoss",
+      "met_value": 8.0,
+      "category": "cardio",
       "instructions": {
         "male": [
-          "Start in plank position",
-          "Drive knees alternately toward chest",
-          "Keep core tight",
-          "Maintain steady rhythm"
+          "ابدأ واقفاً ثم انزل للوضع القرفصاء",
+          "ضع اليدين على الأرض واقفز بالقدمين للخلف",
+          "اعمل ضغطة واحدة",
+          "اقفز بالقدمين للأمام ثم اقفز عالياً"
         ],
         "female": [
-          "Begin in high plank position",
-          "Alternate bringing knees to chest",
-          "Keep hips level",
-          "Control the movement speed"
+          "ابدئي واقفة ثم انزلي للقرفصاء",
+          "ضعي اليدين على الأرض",
+          "اتخذي وضعية البلانك بالخطو للخلف",
+          "ارجعي بالخطو وقفي مع رفع الذراعين"
         ]
       },
-      "tips": "Keep your hips at the same level throughout the movement",
-      "video_description": "Dynamic mountain climbers with cardio intensity"
+      "tips": "ابدئي ببطء وزيدي السرعة تدريجياً",
+      "emoji": "🔥"
     },
     {
       "id": 6,
-      "name": "Burpees",
+      "name": "Mountain Climbers",
       "level": "intermediate",
-      "gender": "both",
-      "goal": "weightLoss",
-      "duration": 120,
-      "met_value": 12.0,
+      "duration": 90,
+      "goal": "cardio",
+      "met_value": 6.0,
+      "category": "cardio",
       "instructions": {
         "male": [
-          "Start standing, drop into squat",
-          "Jump feet back to plank",
-          "Do push-up, jump feet forward",
-          "Explode up with jump"
+          "ابدأ في وضعية البلانك",
+          "اجلب الركبة اليمنى نحو الصدر بسرعة",
+          "أرجعها وكرر بالركبة اليسرى",
+          "استمر بالتبديل السريع"
         ],
         "female": [
-          "Begin standing, squat down",
-          "Step or jump back to plank",
-          "Optional push-up, step forward",
-          "Stand and reach arms up"
+          "ابدئي في وضعية البلانك",
+          "اجلبي ركبة واحدة نحو الصدر",
+          "أرجعيها وبدلي بالأخرى",
+          "حافظي على ثبات الجذع"
         ]
       },
-      "tips": "Land softly and maintain control throughout",
-      "video_description": "Full burpee sequence with modification options"
+      "tips": "حافظي على الوركين في مستوى واحد",
+      "emoji": "⛰️"
     },
     {
       "id": 7,
-      "name": "Dead Bug",
-      "level": "beginner",
-      "gender": "both",
-      "goal": "general",
-      "duration": 120,
-      "met_value": 3.0,
+      "name": "Tricep Dips",
+      "level": "intermediate",
+      "duration": 90,
+      "goal": "muscleGain",
+      "met_value": 4.0,
+      "category": "arms",
       "instructions": {
         "male": [
-          "Lie on back, arms up, knees bent",
-          "Lower opposite arm and leg",
-          "Return to starting position",
-          "Alternate sides"
+          "اجلس على حافة كرسي مع اليدين بجانب الوركين",
+          "ازحف للأمام حتى تحمل وزنك على اليدين",
+          "اخفض الجسم بثني المرفقين",
+          "ادفع نفسك لأعلى للعودة"
         ],
         "female": [
-          "Lie on back with arms extended up",
-          "Slowly lower opposite arm and leg",
-          "Keep core engaged",
-          "Switch sides with control"
+          "اجلسي على حافة كرسي ثابت",
+          "ضعي اليدين على الحافة واثني الركبتين",
+          "اخفضي الجسم ببطء",
+          "ادفعي بالذراعين للصعود"
         ]
       },
-      "tips": "Keep your lower back pressed into the floor",
-      "video_description": "Core stability exercise with limb coordination"
+      "tips": "أبقي المرفقين قريبين من الجسم",
+      "emoji": "💺"
     },
     {
       "id": 8,
-      "name": "Wall Sit",
-      "level": "beginner",
-      "gender": "both",
-      "goal": "general",
-      "duration": 60,
-      "met_value": 5.0,
+      "name": "Russian Twists",
+      "level": "intermediate",
+      "duration": 90,
+      "goal": "toning",
+      "met_value": 3.5,
+      "category": "core",
       "instructions": {
         "male": [
-          "Lean back against wall",
-          "Slide down to 90-degree angle",
-          "Keep feet hip-width apart",
-          "Hold position"
+          "اجلس مع ثني الركبتين والميل للخلف قليلاً",
+          "ارفع القدمين عن الأرض",
+          "أدر الجذع يميناً ويساراً",
+          "حافظ على استقامة الصدر"
         ],
         "female": [
-          "Press back against wall",
-          "Lower into seated position",
-          "Keep knees aligned over ankles",
-          "Maintain the hold"
+          "اجلسي مع ثني الركبتين",
+          "أبقي القدمين على الأرض للثبات",
+          "أديري الجذع من جهة لأخرى",
+          "ركزي على الحركة المنضبطة"
         ]
       },
-      "tips": "Distribute weight evenly between both legs",
-      "video_description": "Isometric leg strength exercise against wall"
+      "tips": "ركزي على دوران الجذع وليس الذراعين فقط",
+      "emoji": "🌪️"
     },
     {
       "id": 9,
       "name": "Jumping Jacks",
       "level": "beginner",
-      "gender": "both",
-      "goal": "general",
-      "duration": 90,
+      "duration": 120,
+      "goal": "cardio",
       "met_value": 7.0,
+      "category": "cardio",
       "instructions": {
         "male": [
-          "Start with feet together, arms at sides",
-          "Jump feet apart while raising arms",
-          "Jump back to starting position",
-          "Maintain steady rhythm"
+          "قف منتصباً مع ضم القدمين والذراعين",
+          "اقفز مع فتح الرجلين ورفع الذراعين",
+          "اقفز مرة أخرى للعودة للوضع الأولي",
+          "كرر بإيقاع سريع"
         ],
         "female": [
-          "Begin with feet together",
-          "Jump feet wide while arms go overhead",
-          "Return to starting position",
-          "Keep movement controlled"
+          "قفي منتصبة مع ضم القدمين",
+          "اقفزي مع فتح الرجلين ورفع الذراعين عالياً",
+          "ارجعي للوضع الأولي",
+          "استمري بإيقاع مريح"
         ]
       },
-      "tips": "Land softly on the balls of your feet",
-      "video_description": "Classic cardio exercise with arm coordination"
+      "tips": "اهبطي على مقدمة القدمين للتخفيف عن الركبتين",
+      "emoji": "🤸"
     },
     {
       "id": 10,
-      "name": "Glute Bridges",
-      "level": "beginner",
-      "gender": "both",
-      "goal": "general",
-      "duration": 90,
+      "name": "Wall Sit",
+      "level": "intermediate",
+      "duration": 60,
+      "goal": "endurance",
       "met_value": 4.0,
+      "category": "legs",
       "instructions": {
         "male": [
-          "Lie on back, knees bent",
-          "Lift hips by squeezing glutes",
-          "Create straight line from knees to shoulders",
-          "Lower with control"
+          "قف مع ظهرك ملاصق للحائط",
+          "انزل كأنك تجلس على كرسي",
+          "حافظ على الفخذين موازيين للأرض",
+          "استمر في هذا الوضع"
         ],
         "female": [
-          "Lie on back with feet flat",
-          "Squeeze glutes to lift hips",
-          "Keep core engaged",
-          "Lower slowly"
+          "ألصقي ظهرك بالحائط",
+          "انزلي تدريجياً كأنك تجلسين",
+          "حافظي على زاوية 90 درجة بالركبتين",
+          "تنفسي بعمق أثناء التمرين"
         ]
       },
-      "tips": "Squeeze your glutes at the top of the movement",
-      "video_description": "Hip strengthening exercise with glute activation"
+      "tips": "ابدئي بـ 30 ثانية وزيدي تدريجياً",
+      "emoji": "🧱"
     },
     {
       "id": 11,
       "name": "High Knees",
       "level": "beginner",
-      "gender": "both",
-      "goal": "general",
-      "duration": 60,
-      "met_value": 8.0,
+      "duration": 90,
+      "goal": "cardio",
+      "met_value": 6.5,
+      "category": "cardio",
       "instructions": {
         "male": [
-          "Stand tall, drive knees up high",
-          "Pump arms in running motion",
-          "Keep core engaged",
-          "Maintain quick pace"
+          "قف منتصباً مع المباعدة بين القدمين",
+          "ارفع الركبة اليمنى نحو الصدر",
+          "أنزلها وارفع اليسرى بسرعة",
+          "استمر بالتبديل السريع"
         ],
         "female": [
-          "Stand with good posture",
-          "Lift knees toward chest",
-          "Swing arms naturally",
-          "Keep rhythm steady"
+          "قفي منتصبة واتخذي وضعية الجري",
+          "ارفعي ركبة واحدة عالياً",
+          "بدلي بسرعة مع الركبة الأخرى",
+          "حافظي على إيقاع منتظم"
         ]
       },
-      "tips": "Try to bring your knees up to hip level",
-      "video_description": "Cardio drill emphasizing knee lift and cadence"
+      "tips": "حافظي على استقامة الجذع وارفعي الركبتين عالياً",
+      "emoji": "🏃"
     },
     {
       "id": 12,
-      "name": "Tricep Dips",
-      "level": "intermediate",
-      "gender": "both",
-      "goal": "muscleGain",
+      "name": "Dead Bug",
+      "level": "beginner",
       "duration": 90,
-      "met_value": 6.0,
+      "goal": "toning",
+      "met_value": 2.5,
+      "category": "core",
       "instructions": {
         "male": [
-          "Sit on chair edge, hands beside hips",
-          "Lower body by bending elbows",
-          "Push back up to starting position",
-          "Keep elbows pointing back"
+          "استلق على الظهر مع رفع الركبتين 90 درجة",
+          "مد الذراع اليمنى للخلف والرجل اليسرى للأمام",
+          "ارجع للوضع الأولي",
+          "كرر بالجهة المقابلة"
         ],
         "female": [
-          "Position hands on chair edge",
-          "Lower body with control",
-          "Keep legs bent for easier variation",
-          "Press through palms to lift"
+          "استلقي على الظهر مع ثني الركبتين",
+          "ارفعي الركبتين حتى تشكل زاوية 90 درجة",
+          "مدي ذراع وساق متقابلتين ببطء",
+          "ارجعي ببطء وكرري بالجهة الأخرى"
         ]
       },
-      "tips": "Keep your elbows close to your body",
-      "video_description": "Upper body strength exercise targeting triceps"
+      "tips": "حافظي على ملامسة أسفل الظهر للأرض طوال الوقت",
+      "emoji": "🐛"
     },
     {
       "id": 13,
-      "name": "Russian Twists",
-      "level": "intermediate",
-      "gender": "both",
+      "name": "Side Plank",
+      "level": "advanced",
+      "duration": 45,
       "goal": "toning",
-      "duration": 120,
-      "met_value": 5.0,
+      "met_value": 3.8,
+      "category": "core",
       "instructions": {
         "male": [
-          "Sit with knees bent, lean back slightly",
-          "Lift feet off ground",
-          "Rotate torso side to side",
-          "Keep chest up"
+          "استلق على الجانب مع الاتكاء على المرفق",
+          "ارفع الوركين لتشكيل خط مستقيم",
+          "حافظ على هذا الوضع",
+          "كرر على الجانب الآخر"
         ],
         "female": [
-          "Sit with knees bent, core engaged",
-          "Lean back to challenge core",
-          "Twist from side to side",
-          "Keep movements controlled"
+          "استلقي على الجانب واتكئي على المرفق",
+          "ارفعي الوركين عن الأرض",
+          "حافظي على استقامة الجسم",
+          "ابدئي بـ 20 ثانية لكل جانب"
         ]
       },
-      "tips": "Focus on rotating your torso, not just your arms",
-      "video_description": "Core rotation exercise for oblique strength"
+      "tips": "لا تدعي الوركين ينخفضان أو يدوران",
+      "emoji": "📐"
     },
     {
       "id": 14,
-      "name": "Step-ups",
-      "level": "intermediate",
-      "gender": "both",
-      "goal": "endurance",
-      "duration": 180,
-      "met_value": 7.0,
+      "name": "Superman",
+      "level": "beginner",
+      "duration": 60,
+      "goal": "toning",
+      "met_value": 2.8,
+      "category": "back",
       "instructions": {
         "male": [
-          "Step onto stable surface",
-          "Drive through heel to step up",
-          "Step down with control",
-          "Alternate leading leg"
+          "استلق على البطن مع مد الذراعين للأمام",
+          "ارفع الصدر والذراعين والساقين معاً",
+          "حافظ على هذا الوضع لثواني",
+          "أنزل ببطء وكرر"
         ],
         "female": [
-          "Place foot fully on step",
-          "Push through heel to stand",
-          "Step down slowly",
-          "Switch leading leg"
+          "استلقي على البطن مع مد الذراعين",
+          "ارفعي الصدر والذراعين قليلاً",
+          "أضيفي الساقين إذا كان مريحاً",
+          "احتفظي بالوضع لثواني قليلة"
         ]
       },
-      "tips": "Use your leg muscles, not momentum to step up",
-      "video_description": "Functional leg exercise using step or platform"
+      "tips": "لا ترفعي الرأس كثيراً لتجنب إجهاد الرقبة",
+      "emoji": "🦸"
     }
   ]
 }

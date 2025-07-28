@@ -1,6 +1,5 @@
 [build]
-  command = "pip install Flask==2.3.3"
-  functions = "netlify/functions"
+  command = "echo 'Building Training Club...'"
   publish = "."
 
 [build.environment]
@@ -12,24 +11,38 @@
   status = 200
 
 [[redirects]]
-  from = "/static/*"
-  to = "/static/:splat"
-  status = 200
-  
-[[redirects]]
-  from = "/*"
-  to = "/.netlify/functions/app/:splat"
+  from = "/"
+  to = "/index_new.html"
   status = 200
 
-[[headers]]
-  for = "/static/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+[[redirects]]
+  from = "/profile"
+  to = "/profile_new.html"
+  status = 200
+
+[[redirects]]
+  from = "/plan"
+  to = "/plan_new.html"
+  status = 200
+
+[functions]
+  directory = "netlify/functions"
+  python_runtime = "python3.9"
+
+[dev]
+  command = "python app_new.py"
+  port = 5000
+  targetPort = 5000
 
 [[headers]]
   for = "/*"
   [headers.values]
-    X-Content-Type-Options = "nosniff"
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/static/*"
+  [headers.values]
+    cache-control = "public, max-age=31536000, s-maxage=31536000"

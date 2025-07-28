@@ -171,13 +171,19 @@ class ArabicTranslation {
         
         this.exerciseImages = {
             'push_ups': '💪',
-            'squats': '🦵',
+            'squats': '🦵', 
             'plank': '🏋️',
-            'burpees': '🔥',
             'lunges': '🚶',
+            'burpees': '🔥',
             'mountain_climbers': '⛰️',
             'tricep_dips': '💺',
             'russian_twists': '🌪️',
+            'jumping_jacks': '🤸',
+            'wall_sit': '🧱',
+            'high_knees': '🏃',
+            'dead_bug': '🐛',
+            'side_plank': '📐',
+            'superman': '🦸',
             'step_ups': '📏'
         };
         

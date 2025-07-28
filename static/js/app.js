@@ -410,9 +410,9 @@ class FitnessApp {
         const gender = this.currentUser.gender || 'male';
         const instructions = exercise.instructions[gender] || exercise.instructions.male || [];
         
-        // Get exercise emoji and translated name
-        const exerciseEmoji = window.arabic ? arabic.getExerciseEmoji(exercise.name) : '🏋️';
-        const exerciseName = window.arabic ? arabic.t(exercise.name.toLowerCase().replace(/[^a-z]/g, '_')) || exercise.name : exercise.name;
+        // Get exercise emoji - use from exercise data if available, otherwise from arabic helper
+        const exerciseEmoji = exercise.emoji || (window.arabic ? arabic.getExerciseEmoji(exercise.name) : '🏋️');
+        const exerciseName = exercise.name; // Use direct name since it's already in Arabic
         
         return `
             <div class="exercise-card" data-exercise-id="${exercise.id}" onclick="app.openExerciseModal(${exercise.id})">
@@ -425,13 +425,14 @@ class FitnessApp {
                 </div>
                 <div class="exercise-body">
                     <div class="exercise-info">
-                        <span><strong>${window.arabic ? arabic.t('duration') : 'Duration'}:</strong> ${exercise.duration}s</span>
-                        <span><strong>${window.arabic ? arabic.t('level') : 'Level'}:</strong> ${exercise.level}</span>
-                        <span><strong>${window.arabic ? arabic.t('focus') : 'Focus'}:</strong> ${exercise.goal}</span>
+                        <span><strong>المدة:</strong> ${exercise.duration}ث</span>
+                        <span><strong>المستوى:</strong> ${this.translateLevel(exercise.level)}</span>
+                        <span><strong>الهدف:</strong> ${this.translateGoal(exercise.goal)}</span>
+                        <span><strong>الفئة:</strong> ${this.translateCategory(exercise.category)}</span>
                     </div>
                     
                     <div class="exercise-preview">
-                        <p>Click to start this exercise in full screen mode</p>
+                        <p>اضغط لبدء التمرين في الشاشة الكاملة</p>
                         <div class="preview-animation">
                             ${exerciseEmoji}
                         </div>
@@ -439,10 +440,10 @@ class FitnessApp {
                     
                     <div class="quick-actions">
                         <button class="btn btn-primary" onclick="event.stopPropagation(); app.openExerciseModal(${exercise.id})">
-                            ${window.arabic ? arabic.t('start_exercise') : 'Start Exercise'}
+                            ابدأ التمرين
                         </button>
                         <button class="btn btn-success" onclick="event.stopPropagation(); app.completeExercise('${exercise.id}')">
-                            ${window.arabic ? arabic.t('complete_exercise') : 'Complete Exercise'}
+                            إنهاء التمرين
                         </button>
                     </div>
                 </div>
@@ -458,15 +459,15 @@ class FitnessApp {
         
         container.innerHTML = `
             <div class="tier-header">
-                <h2>Nutrition Plan</h2>
+                <h2>خطة التغذية</h2>
                 <div class="tier-info">
                     <div class="tier-badge">${plan.name}</div>
-                    <div class="daily-calories">${data.daily_calories} calories/day</div>
+                    <div class="daily-calories">${data.daily_calories} سعرة حرارية/يوم</div>
                 </div>
             </div>
             
             <p class="tier-description">${plan.description}</p>
-            <p class="tier-budget"><strong>Daily Budget:</strong> ${plan.budget}</p>
+            <p class="tier-budget"><strong>الميزانية اليومية:</strong> ${plan.budget}</p>
             
             ${mealsHtml}
         `;
@@ -546,6 +547,40 @@ class FitnessApp {
         this.showNotification('Exercise Reset', 'Timer reset to 00:00', 'info');
     }
     
+    translateLevel(level) {
+        const levelMap = {
+            'beginner': 'مبتدئ',
+            'intermediate': 'متوسط', 
+            'advanced': 'متقدم'
+        };
+        return levelMap[level] || level;
+    }
+    
+    translateGoal(goal) {
+        const goalMap = {
+            'weightLoss': 'إنقاص الوزن',
+            'muscleGain': 'بناء العضلات',
+            'toning': 'شد الجسم',
+            'endurance': 'التحمل',
+            'cardio': 'تمارين القلب',
+            'general': 'عام'
+        };
+        return goalMap[goal] || goal;
+    }
+    
+    translateCategory(category) {
+        const categoryMap = {
+            'chest': 'الصدر',
+            'legs': 'الأرجل',
+            'core': 'البطن',
+            'arms': 'الذراعين',
+            'cardio': 'القلب',
+            'back': 'الظهر',
+            'general': 'عام'
+        };
+        return categoryMap[category] || category;
+    }
+
     async completeExercise(exerciseId, duration = 60) {
         try {
             const response = await this.apiCall('/workout/complete', {
@@ -566,20 +601,16 @@ class FitnessApp {
                 header.classList.add('completed');
                 status.innerHTML = '✅';
                 
-                const completedText = window.arabic ? arabic.t('exercise_completed') : 'Exercise Completed!';
-                const greatJobText = window.arabic ? arabic.t('great_job') : 'Great job! You burned';
-                const caloriesText = window.arabic ? arabic.t('calories') : 'calories';
-                
                 this.showNotification(
-                    completedText, 
-                    `${greatJobText} ${response.calories_burned} ${caloriesText}.`, 
+                    'تم إنهاء التمرين!', 
+                    `أحسنت! لقد أحرقت ${response.calories_burned} سعرة حرارية.`, 
                     'success'
                 );
                 
                 return response;
             }
         } catch (error) {
-            this.showNotification('Error', 'Failed to complete exercise.', 'error');
+            this.showNotification('خطأ', 'فشل في إنهاء التمرين.', 'error');
             throw error;
         }
     }
