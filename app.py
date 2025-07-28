@@ -73,7 +73,24 @@ def get_profile(user_id):
         if user_id in users_data:
             return jsonify({'success': True, 'data': users_data[user_id]})
         else:
-            return jsonify({'success': False, 'error': 'User not found'}), 404
+            # Create demo profile for testing
+            demo_profile = {
+                'user_id': user_id,
+                'firstName': 'Demo',
+                'lastName': 'User',
+                'age': 25,
+                'height': 175,
+                'weight': 70,
+                'gender': 'male',
+                'goal': 'weightLoss',
+                'fitnessLevel': 'beginner',
+                'economicLevel': 'medium',
+                'preferredTime': '07:00',
+                'bmi': 22.9,
+                'bmr': 1700
+            }
+            users_data[user_id] = demo_profile
+            return jsonify({'success': True, 'data': demo_profile})
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 400
 
@@ -81,7 +98,32 @@ def get_profile(user_id):
 def get_workout_plan(user_id):
     try:
         if user_id not in users_data:
-            return jsonify({'success': False, 'error': 'User not found'}), 404
+            # Create demo profile if missing
+            demo_profile = {
+                'user_id': user_id,
+                'firstName': 'Demo',
+                'lastName': 'User',
+                'age': 25,
+                'height': 175,
+                'weight': 70,
+                'gender': 'male',
+                'goal': 'weightLoss',
+                'fitnessLevel': 'beginner',
+                'economicLevel': 'medium',
+                'preferredTime': '07:00',
+                'bmi': 22.9,
+                'bmr': 1700
+            }
+            users_data[user_id] = demo_profile
+            workout_progress[user_id] = {
+                'current_day': 1,
+                'completed_days': [],
+                'start_date': datetime.now().isoformat(),
+                'preferred_time': '07:00',
+                'actual_start_time': None,
+                'total_calories_burned': 0,
+                'streak': 0
+            }
         
         user = users_data[user_id]
         progress = workout_progress.get(user_id, {})
@@ -122,7 +164,23 @@ def get_workout_plan(user_id):
 def get_nutrition_plan(user_id):
     try:
         if user_id not in users_data:
-            return jsonify({'success': False, 'error': 'User not found'}), 404
+            # Create demo profile if missing
+            demo_profile = {
+                'user_id': user_id,
+                'firstName': 'Demo',
+                'lastName': 'User',
+                'age': 25,
+                'height': 175,
+                'weight': 70,
+                'gender': 'male',
+                'goal': 'weightLoss',
+                'fitnessLevel': 'beginner',
+                'economicLevel': 'medium',
+                'preferredTime': '07:00',
+                'bmi': 22.9,
+                'bmr': 1700
+            }
+            users_data[user_id] = demo_profile
         
         user = users_data[user_id]
         economic_level = user.get('economicLevel', 'basic')
