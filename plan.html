@@ -78,8 +78,9 @@
                 <span>Overweight</span>
                 <span>Obese</span>
             </div>
-            <div class="bmi-info" id="bmiInfo">
-                <p>Your BMI will be calculated based on your profile data.</p>
+            <div class="bmi-category" id="bmiCategory">
+                <h3>Category: <span id="categoryText">--</span></h3>
+                <p id="bmiRecommendation">Focus on healthy weight gain through balanced nutrition and strength training.</p>
             </div>
         </div>
 
@@ -192,14 +193,104 @@
             </div>
         </div>
 
-        <!-- Workout Section -->
-        <div class="workout-container" id="workoutContainer">
-            <!-- Will be populated by JavaScript -->
+        <!-- Today's Workout Section -->
+        <div class="workout-container">
+            <h2 style="text-align: center; color: var(--primary); margin-bottom: 20px;">🏋️ Today's Workout</h2>
+            <div class="workout-info" style="background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); margin-bottom: 20px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; text-align: center;">
+                    <div>
+                        <div style="font-size: 1.5rem; font-weight: bold; color: var(--primary);">Day 1</div>
+                        <div style="font-size: 0.9rem; color: #666;">Current</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 1.5rem; font-weight: bold; color: var(--primary);">14</div>
+                        <div style="font-size: 0.9rem; color: #666;">Exercises</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 1.5rem; font-weight: bold; color: var(--primary);">30 min</div>
+                        <div style="font-size: 0.9rem; color: #666;">Duration</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 1.5rem; font-weight: bold; color: var(--primary);">200+</div>
+                        <div style="font-size: 0.9rem; color: #666;">Calories</div>
+                    </div>
+                </div>
+            </div>
+            <div class="exercise-preview" style="background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+                <h3 style="color: var(--primary); margin-bottom: 15px;">Sample Exercises for Today:</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                    <div style="padding: 15px; background: #f8f9fa; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 2rem; margin-bottom: 10px;">💪</div>
+                        <strong>Push-ups</strong>
+                        <p style="margin: 5px 0 0 0; font-size: 0.9rem; color: #666;">3 sets × 10 reps</p>
+                    </div>
+                    <div style="padding: 15px; background: #f8f9fa; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 2rem; margin-bottom: 10px;">🦵</div>
+                        <strong>Squats</strong>
+                        <p style="margin: 5px 0 0 0; font-size: 0.9rem; color: #666;">3 sets × 15 reps</p>
+                    </div>
+                    <div style="padding: 15px; background: #f8f9fa; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 2rem; margin-bottom: 10px;">🏋️</div>
+                        <strong>Plank</strong>
+                        <p style="margin: 5px 0 0 0; font-size: 0.9rem; color: #666;">3 sets × 30 sec</p>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 20px;">
+                    <button class="btn btn-success" style="padding: 15px 30px; font-size: 1.1rem;">
+                        🏃‍♂️ Start Today's Workout
+                    </button>
+                </div>
+            </div>
         </div>
 
-        <!-- Nutrition Section -->
-        <div class="nutrition-container" id="nutritionContainer">
-            <!-- Will be populated by JavaScript -->
+        <!-- Nutrition Plan Section -->
+        <div class="nutrition-container">
+            <h2 style="text-align: center; color: var(--primary); margin-bottom: 20px;">🥗 Nutrition Plan</h2>
+            <div class="nutrition-info" style="background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); margin-bottom: 20px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; text-align: center;">
+                    <div>
+                        <div style="font-size: 1.5rem; font-weight: bold; color: var(--primary);">2200</div>
+                        <div style="font-size: 0.9rem; color: #666;">Daily Calories</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 1.5rem; font-weight: bold; color: var(--primary);">6</div>
+                        <div style="font-size: 0.9rem; color: #666;">Meals/Day</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 1.5rem; font-weight: bold; color: var(--primary);">Medium</div>
+                        <div style="font-size: 0.9rem; color: #666;">Budget Level</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 1.5rem; font-weight: bold; color: var(--primary);">Goal</div>
+                        <div style="font-size: 0.9rem; color: #666;">Muscle Gain</div>
+                    </div>
+                </div>
+            </div>
+            <div class="meal-preview" style="background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+                <h3 style="color: var(--primary); margin-bottom: 15px;">Today's Meal Plan:</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                    <div style="padding: 15px; background: #f8f9fa; border-radius: 10px;">
+                        <div style="font-size: 1.5rem; margin-bottom: 10px;">🍳</div>
+                        <strong>Breakfast</strong>
+                        <p style="margin: 5px 0 0 0; font-size: 0.9rem; color: #666;">Oatmeal with fruits and nuts</p>
+                    </div>
+                    <div style="padding: 15px; background: #f8f9fa; border-radius: 10px;">
+                        <div style="font-size: 1.5rem; margin-bottom: 10px;">🥙</div>
+                        <strong>Lunch</strong>
+                        <p style="margin: 5px 0 0 0; font-size: 0.9rem; color: #666;">Grilled chicken with rice</p>
+                    </div>
+                    <div style="padding: 15px; background: #f8f9fa; border-radius: 10px;">
+                        <div style="font-size: 1.5rem; margin-bottom: 10px;">🍽️</div>
+                        <strong>Dinner</strong>
+                        <p style="margin: 5px 0 0 0; font-size: 0.9rem; color: #666;">Salmon with vegetables</p>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 20px;">
+                    <button class="btn btn-secondary" style="padding: 15px 30px; font-size: 1.1rem;">
+                        📖 View Full Meal Plan
+                    </button>
+                </div>
+            </div>
         </div>
 
         <!-- Quick Actions -->
