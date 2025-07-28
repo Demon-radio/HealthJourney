@@ -410,53 +410,39 @@ class FitnessApp {
         const gender = this.currentUser.gender || 'male';
         const instructions = exercise.instructions[gender] || exercise.instructions.male || [];
         
+        // Get exercise emoji and translated name
+        const exerciseEmoji = window.arabic ? arabic.getExerciseEmoji(exercise.name) : '🏋️';
+        const exerciseName = window.arabic ? arabic.t(exercise.name.toLowerCase().replace(/[^a-z]/g, '_')) || exercise.name : exercise.name;
+        
         return `
-            <div class="exercise-card" data-exercise-id="${exercise.id}">
+            <div class="exercise-card" data-exercise-id="${exercise.id}" onclick="app.openExerciseModal(${exercise.id})">
                 <div class="exercise-header">
-                    <h3>${exercise.name}</h3>
+                    <h3>
+                        <span class="exercise-emoji">${exerciseEmoji}</span>
+                        ${exerciseName}
+                    </h3>
                     <div class="exercise-status">⏳</div>
                 </div>
                 <div class="exercise-body">
                     <div class="exercise-info">
-                        <span><strong>Duration:</strong> ${exercise.duration}s</span>
-                        <span><strong>Level:</strong> ${exercise.level}</span>
-                        <span><strong>Focus:</strong> ${exercise.goal}</span>
+                        <span><strong>${window.arabic ? arabic.t('duration') : 'Duration'}:</strong> ${exercise.duration}s</span>
+                        <span><strong>${window.arabic ? arabic.t('level') : 'Level'}:</strong> ${exercise.level}</span>
+                        <span><strong>${window.arabic ? arabic.t('focus') : 'Focus'}:</strong> ${exercise.goal}</span>
                     </div>
                     
-                    <div class="exercise-instructions">
-                        <h4>Instructions:</h4>
-                        <ol>
-                            ${instructions.map(instruction => `<li>${instruction}</li>`).join('')}
-                        </ol>
-                    </div>
-                    
-                    ${exercise.tips ? `
-                        <div class="exercise-tips">
-                            <strong>Tip:</strong> ${exercise.tips}
-                        </div>
-                    ` : ''}
-                    
-                    <div class="exercise-timer" id="timer-${exercise.id}">
-                        <div class="timer-display">00:00</div>
-                        <div class="timer-controls">
-                            <button class="btn btn-success" onclick="app.startExercise('${exercise.id}')">
-                                Start Exercise
-                            </button>
-                            <button class="btn btn-warning" onclick="app.pauseExercise('${exercise.id}')">
-                                Pause
-                            </button>
-                            <button class="btn btn-secondary" onclick="app.resetExercise('${exercise.id}')">
-                                Reset
-                            </button>
+                    <div class="exercise-preview">
+                        <p>Click to start this exercise in full screen mode</p>
+                        <div class="preview-animation">
+                            ${exerciseEmoji}
                         </div>
                     </div>
                     
-                    <div class="exercise-controls">
-                        <button class="btn btn-success" onclick="app.completeExercise('${exercise.id}')">
-                            Complete Exercise
+                    <div class="quick-actions">
+                        <button class="btn btn-primary" onclick="event.stopPropagation(); app.openExerciseModal(${exercise.id})">
+                            ${window.arabic ? arabic.t('start_exercise') : 'Start Exercise'}
                         </button>
-                        <button class="btn btn-warning" onclick="app.skipExercise('${exercise.id}')">
-                            Skip Exercise
+                        <button class="btn btn-success" onclick="event.stopPropagation(); app.completeExercise('${exercise.id}')">
+                            ${window.arabic ? arabic.t('complete_exercise') : 'Complete Exercise'}
                         </button>
                     </div>
                 </div>
@@ -530,15 +516,29 @@ class FitnessApp {
     }
     
     // Exercise controls
+    openExerciseModal(exerciseId) {
+        const exercise = this.workoutData.exercises.find(ex => ex.id == exerciseId);
+        if (exercise && window.exerciseModal) {
+            exerciseModal.open(exercise);
+        }
+    }
+    
     startExercise(exerciseId) {
         console.log('Starting exercise:', exerciseId);
-        // Simple timer implementation
-        this.showNotification('Exercise Started', 'Timer started!', 'success');
+        this.showNotification(
+            window.arabic ? arabic.t('exercise_started') : 'Exercise Started', 
+            'Timer started! 💪', 
+            'success'
+        );
     }
     
     pauseExercise(exerciseId) {
         console.log('Pausing exercise:', exerciseId);
-        this.showNotification('Exercise Paused', 'Take a break!', 'warning');
+        this.showNotification(
+            window.arabic ? arabic.t('exercise_paused') : 'Exercise Paused', 
+            'Take a break!', 
+            'warning'
+        );
     }
     
     resetExercise(exerciseId) {
@@ -546,14 +546,14 @@ class FitnessApp {
         this.showNotification('Exercise Reset', 'Timer reset to 00:00', 'info');
     }
     
-    async completeExercise(exerciseId) {
+    async completeExercise(exerciseId, duration = 60) {
         try {
             const response = await this.apiCall('/workout/complete', {
                 method: 'POST',
                 body: JSON.stringify({
                     user_id: this.currentUser.user_id,
                     exercise_id: exerciseId,
-                    duration: 60 // Default duration
+                    duration: duration
                 })
             });
             
@@ -566,10 +566,21 @@ class FitnessApp {
                 header.classList.add('completed');
                 status.innerHTML = '✅';
                 
-                this.showNotification('Exercise Completed!', `Great job! You burned ${response.calories_burned} calories.`, 'success');
+                const completedText = window.arabic ? arabic.t('exercise_completed') : 'Exercise Completed!';
+                const greatJobText = window.arabic ? arabic.t('great_job') : 'Great job! You burned';
+                const caloriesText = window.arabic ? arabic.t('calories') : 'calories';
+                
+                this.showNotification(
+                    completedText, 
+                    `${greatJobText} ${response.calories_burned} ${caloriesText}.`, 
+                    'success'
+                );
+                
+                return response;
             }
         } catch (error) {
             this.showNotification('Error', 'Failed to complete exercise.', 'error');
+            throw error;
         }
     }
     
