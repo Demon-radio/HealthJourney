@@ -34,20 +34,38 @@ def serve_static(filename):
 def save_profile():
     try:
         data = request.get_json()
+        
+        # Validate required fields
+        if not data:
+            return jsonify({'success': False, 'error': 'No data provided'}), 400
+        
+        required_fields = ['firstName', 'lastName', 'age', 'height', 'weight', 'gender']
+        for field in required_fields:
+            if field not in data or data[field] == '':
+                return jsonify({'success': False, 'error': f'Missing required field: {field}'}), 400
+        
         user_id = data.get('user_id', 'default_user')
         
         # Calculate BMI
-        height_m = data['height'] / 100
-        bmi = data['weight'] / (height_m ** 2)
-        data['bmi'] = round(bmi, 1)
+        try:
+            height_m = float(data['height']) / 100
+            weight = float(data['weight'])
+            bmi = weight / (height_m ** 2)
+            data['bmi'] = round(bmi, 1)
+        except (ValueError, ZeroDivisionError):
+            return jsonify({'success': False, 'error': 'Invalid height or weight values'}), 400
         
         # Calculate BMR (Basal Metabolic Rate)
-        if data['gender'] == 'male':
-            bmr = 88.362 + (13.397 * data['weight']) + (4.799 * data['height']) - (5.677 * data['age'])
-        else:
-            bmr = 447.593 + (9.247 * data['weight']) + (3.098 * data['height']) - (4.330 * data['age'])
-        
-        data['bmr'] = round(bmr, 0)
+        try:
+            age = float(data['age'])
+            if data['gender'] == 'male':
+                bmr = 88.362 + (13.397 * weight) + (4.799 * float(data['height'])) - (5.677 * age)
+            else:
+                bmr = 447.593 + (9.247 * weight) + (3.098 * float(data['height'])) - (4.330 * age)
+            
+            data['bmr'] = round(bmr, 0)
+        except ValueError:
+            return jsonify({'success': False, 'error': 'Invalid age value'}), 400
         
         # Store user data
         users_data[user_id] = data
@@ -65,7 +83,8 @@ def save_profile():
         
         return jsonify({'success': True, 'user_id': user_id, 'bmi': data['bmi'], 'bmr': data['bmr']})
     except Exception as e:
-        return jsonify({'success': False, 'error': str(e)}), 400
+        print(f"Profile creation error: {str(e)}")  # Server-side logging
+        return jsonify({'success': False, 'error': f'Server error: {str(e)}'}), 500
 
 @app.route('/api/profile/<user_id>', methods=['GET'])
 def get_profile(user_id):
@@ -296,6 +315,25 @@ def update_workout_time():
         return jsonify({'success': True, 'new_time': new_time})
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 400
+
+# Error handlers
+@app.errorhandler(404)
+def not_found_error(error):
+    if request.path.startswith('/api/'):
+        return jsonify({'success': False, 'error': 'API endpoint not found'}), 404
+    return send_from_directory('.', '404.html') if os.path.exists('404.html') else ('Page not found', 404)
+
+@app.errorhandler(500)
+def internal_error(error):
+    if request.path.startswith('/api/'):
+        return jsonify({'success': False, 'error': 'Internal server error'}), 500
+    return ('Internal server error', 500)
+
+@app.errorhandler(405)
+def method_not_allowed_error(error):
+    if request.path.startswith('/api/'):
+        return jsonify({'success': False, 'error': 'Method not allowed'}), 405
+    return ('Method not allowed', 405)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

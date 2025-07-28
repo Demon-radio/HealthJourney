@@ -269,15 +269,38 @@ const API = {
                 ...options
             });
             
-            const data = await response.json();
+            // Check if response is actually JSON
+            const contentType = response.headers.get('content-type');
+            let data;
+            
+            if (contentType && contentType.includes('application/json')) {
+                data = await response.json();
+            } else {
+                // If not JSON, likely an HTML error page
+                const textResponse = await response.text();
+                console.error('Non-JSON response received:', textResponse);
+                throw new Error(`Server error: Expected JSON but received ${contentType || 'unknown content type'}`);
+            }
             
             if (!response.ok) {
-                throw new Error(data.error || `HTTP ${response.status}`);
+                throw new Error(data.error || `HTTP ${response.status}: ${response.statusText}`);
             }
             
             return data;
         } catch (error) {
-            console.error('API request failed:', error);
+            console.error('API request failed:', {
+                endpoint,
+                options,
+                error: error.message
+            });
+            
+            // Provide user-friendly error messages
+            if (error.message.includes('Failed to fetch')) {
+                throw new Error('Network error: Please check your internet connection');
+            } else if (error.message.includes('Unexpected token')) {
+                throw new Error('Server error: Invalid response format');
+            }
+            
             throw error;
         }
     },

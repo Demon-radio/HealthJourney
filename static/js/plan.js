@@ -7,10 +7,122 @@ document.addEventListener('DOMContentLoaded', function() {
     initializePlanPage();
 });
 
+// Loading state functions
+function showLoadingState() {
+    const container = document.querySelector('.container');
+    let loadingElement = document.getElementById('loading-state');
+    
+    if (!loadingElement) {
+        loadingElement = document.createElement('div');
+        loadingElement.id = 'loading-state';
+        loadingElement.className = 'loading-container';
+        loadingElement.innerHTML = `
+            <div class="loading-spinner"></div>
+            <p>Loading your personalized plan...</p>
+        `;
+        container.appendChild(loadingElement);
+    }
+    
+    loadingElement.style.display = 'block';
+}
+
+function hideLoadingState() {
+    const loadingElement = document.getElementById('loading-state');
+    if (loadingElement) {
+        loadingElement.style.display = 'none';
+    }
+}
+
+// Fallback data functions
+function createFallbackWorkout() {
+    return {
+        success: true,
+        exercises: [
+            {
+                id: 1,
+                name: "Push-ups",
+                duration: 120,
+                instructions: {
+                    male: ["Start in plank position", "Lower chest to floor", "Push back up", "Keep core tight"],
+                    female: ["Start in plank or knee position", "Lower chest to floor", "Push back up", "Keep core engaged"]
+                },
+                tips: "Keep your body in a straight line"
+            },
+            {
+                id: 2,
+                name: "Squats",
+                duration: 180,
+                instructions: {
+                    male: ["Stand feet shoulder-width apart", "Lower like sitting in chair", "Keep knees behind toes", "Return to standing"],
+                    female: ["Stand feet hip-width apart", "Lower keeping weight in heels", "Keep chest up", "Push through heels"]
+                },
+                tips: "Keep chest up and knees aligned"
+            }
+        ],
+        current_day: 1,
+        total_exercises: 2,
+        progress: {
+            current_day: 1,
+            completed_days: [],
+            total_calories_burned: 0,
+            streak: 0
+        }
+    };
+}
+
+function createFallbackNutrition() {
+    return {
+        success: true,
+        plan: {
+            name: "Basic Plan",
+            meals: {
+                breakfast: [
+                    {
+                        name: "Oatmeal with Banana",
+                        calories: 350,
+                        protein: 12,
+                        ingredients: "Rolled oats, banana, milk, honey"
+                    }
+                ],
+                lunch: [
+                    {
+                        name: "Chicken and Rice Bowl",
+                        calories: 450,
+                        protein: 35,
+                        ingredients: "Chicken breast, brown rice, vegetables"
+                    }
+                ],
+                dinner: [
+                    {
+                        name: "Baked Fish with Vegetables",
+                        calories: 400,
+                        protein: 30,
+                        ingredients: "White fish, roasted vegetables, olive oil"
+                    }
+                ],
+                snacks: [
+                    {
+                        name: "Greek Yogurt",
+                        calories: 150,
+                        protein: 15,
+                        ingredients: "Greek yogurt, berries"
+                    }
+                ]
+            }
+        },
+        daily_calories: 1500,
+        economic_level: "basic"
+    };
+}
+
 async function initializePlanPage() {
+    console.log('Initializing plan page...');
+    
     const userData = Utils.loadFromStorage('userData');
+    console.log('Loaded user data from storage:', userData);
     
     if (!userData || !userData.user_id) {
+        console.log('No user data found, redirecting to profile...');
         NotificationSystem.show(
             'Profile Required',
             'Please complete your profile first.',
@@ -22,21 +134,64 @@ async function initializePlanPage() {
         return;
     }
     
-    // Update user info display
-    updateUserInfo(userData);
-    
-    // Load workout and nutrition plans
-    await loadWorkoutPlan(userData.user_id);
-    await loadNutritionPlan(userData.user_id);
-    
-    // Load progress from storage
-    loadProgress();
-    
-    // Setup event listeners
-    setupEventListeners();
-    
-    // Check for workout time
-    checkWorkoutTime(userData);
+    try {
+        // Update user info display
+        updateUserInfo(userData);
+        
+        // Initialize notification system
+        NotificationSystem.init();
+        
+        // Show loading state
+        showLoadingState();
+        
+        // Load workout and nutrition plans in parallel
+        const [workoutResult, nutritionResult] = await Promise.allSettled([
+            loadWorkoutPlan(userData.user_id),
+            loadNutritionPlan(userData.user_id)
+        ]);
+        
+        // Handle results
+        if (workoutResult.status === 'rejected') {
+            console.error('Workout plan loading failed:', workoutResult.reason);
+            NotificationSystem.show(
+                'Loading Error',
+                'Failed to load workout plan. Using offline data.',
+                'warning'
+            );
+        }
+        
+        if (nutritionResult.status === 'rejected') {
+            console.error('Nutrition plan loading failed:', nutritionResult.reason);
+            NotificationSystem.show(
+                'Loading Error',
+                'Failed to load nutrition plan. Using offline data.',
+                'warning'
+            );
+        }
+        
+        // Load progress from storage
+        loadProgress();
+        
+        // Setup event listeners
+        setupEventListeners();
+        
+        // Check for workout time
+        checkWorkoutTime(userData);
+        
+        // Hide loading state
+        hideLoadingState();
+        
+        console.log('Plan page initialization complete');
+        
+    } catch (error) {
+        console.error('Plan page initialization failed:', error);
+        NotificationSystem.show(
+            'Initialization Error',
+            'Failed to load page. Please refresh and try again.',
+            'danger'
+        );
+        hideLoadingState();
+    }
 }
 
 function updateUserInfo(userData) {
@@ -98,40 +253,45 @@ function updateUserInfo(userData) {
 
 async function loadWorkoutPlan(userId) {
     try {
+        console.log('Loading workout plan for user:', userId);
         const response = await API.getWorkoutPlan(userId);
+        console.log('Workout plan response:', response);
         
         if (response.success) {
             currentWorkoutData = response;
             displayWorkoutPlan(response);
+            console.log('Workout plan loaded successfully');
         } else {
             throw new Error(response.error);
         }
     } catch (error) {
         console.error('Failed to load workout plan:', error);
-        NotificationSystem.show(
-            'Loading Error',
-            'Failed to load workout plan. Please try again.',
-            'danger'
-        );
+        // Create fallback workout data
+        const fallbackWorkout = createFallbackWorkout();
+        currentWorkoutData = fallbackWorkout;
+        displayWorkoutPlan(fallbackWorkout);
+        throw error; // Re-throw for Promise.allSettled handling
     }
 }
 
 async function loadNutritionPlan(userId) {
     try {
+        console.log('Loading nutrition plan for user:', userId);
         const response = await API.getNutritionPlan(userId);
+        console.log('Nutrition plan response:', response);
         
         if (response.success) {
             displayNutritionPlan(response);
+            console.log('Nutrition plan loaded successfully');
         } else {
             throw new Error(response.error);
         }
     } catch (error) {
         console.error('Failed to load nutrition plan:', error);
-        NotificationSystem.show(
-            'Loading Error',
-            'Failed to load nutrition plan. Please try again.',
-            'danger'
-        );
+        // Create fallback nutrition data
+        const fallbackNutrition = createFallbackNutrition();
+        displayNutritionPlan(fallbackNutrition);
+        throw error; // Re-throw for Promise.allSettled handling
     }
 }
 

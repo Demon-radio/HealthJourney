@@ -92,10 +92,31 @@ async function handleProfileSubmit(event) {
         profileData[key] = value;
     }
     
+    // Validate required fields
+    const requiredFields = ['firstName', 'lastName', 'age', 'height', 'weight', 'gender'];
+    for (const field of requiredFields) {
+        if (!profileData[field] || profileData[field].trim() === '') {
+            NotificationSystem.show(
+                'Missing Information',
+                `Please fill in the ${field.replace(/([A-Z])/g, ' $1').toLowerCase()} field.`,
+                'warning'
+            );
+            return;
+        }
+    }
+    
     // Convert numeric fields
     ['age', 'height', 'weight'].forEach(field => {
         if (profileData[field]) {
             profileData[field] = parseFloat(profileData[field]);
+            if (isNaN(profileData[field])) {
+                NotificationSystem.show(
+                    'Invalid Data',
+                    `Please enter a valid number for ${field}.`,
+                    'warning'
+                );
+                return;
+            }
         }
     });
     
@@ -111,14 +132,20 @@ async function handleProfileSubmit(event) {
         submitBtn.textContent = 'Creating Profile...';
         submitBtn.disabled = true;
         
+        console.log('Submitting profile data:', profileData);
+        
         // Save to server
         const response = await API.saveProfile(profileData);
+        
+        console.log('Profile save response:', response);
         
         if (response.success) {
             // Save to localStorage
             profileData.bmi = response.bmi;
             profileData.bmr = response.bmr;
-            Utils.saveToStorage('userData', profileData);
+            const saveSuccess = Utils.saveToStorage('userData', profileData);
+            
+            console.log('Profile saved to localStorage:', saveSuccess, profileData);
             
             // Show success notification
             NotificationSystem.show(
@@ -144,8 +171,10 @@ async function handleProfileSubmit(event) {
         
         // Reset submit button
         const submitBtn = event.target.querySelector('button[type="submit"]');
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
+        if (submitBtn) {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        }
     }
 }
 
