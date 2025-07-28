@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Your Profile | Training Club</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👤</text></svg>">
+</head>
+<body>
+    <div class="notification-center" id="notificationCenter"></div>
+    
+    <header>
+        <div class="container">
+            <button class="back-btn" onclick="window.location.href='index.html'">
+                ← Back
+            </button>
+            <div>
+                <h1>Create Your Profile</h1>
+                <p>Tell us about yourself to get your personalized plan</p>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <form id="profileForm" class="profile-form">
+            <!-- Personal Information -->
+            <div class="form-section">
+                <h3>Personal Information</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name *</label>
+                        <input type="text" id="firstName" name="firstName" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name *</label>
+                        <input type="text" id="lastName" name="lastName" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="age">Age *</label>
+                    <input type="number" id="age" name="age" class="form-control" min="12" max="100" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="height">Height (cm) *</label>
+                        <input type="number" id="height" name="height" class="form-control" min="100" max="250" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="weight">Weight (kg) *</label>
+                        <input type="number" id="weight" name="weight" class="form-control" min="30" max="300" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Gender *</label>
+                    <div class="option-grid">
+                        <div class="option-item">
+                            <input type="radio" id="male" name="gender" value="male" required>
+                            <label for="male">👨 Male</label>
+                        </div>
+                        <div class="option-item">
+                            <input type="radio" id="female" name="gender" value="female" required>
+                            <label for="female">👩 Female</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Fitness Goals -->
+            <div class="form-section">
+                <h3>Fitness Goals</h3>
+                <div class="form-group">
+                    <label>Primary Goal *</label>
+                    <div class="option-grid">
+                        <div class="option-item">
+                            <input type="radio" id="weightLoss" name="goal" value="weightLoss" required>
+                            <label for="weightLoss">🔥 Weight Loss</label>
+                        </div>
+                        <div class="option-item">
+                            <input type="radio" id="muscleGain" name="goal" value="muscleGain" required>
+                            <label for="muscleGain">💪 Muscle Gain</label>
+                        </div>
+                        <div class="option-item">
+                            <input type="radio" id="endurance" name="goal" value="endurance" required>
+                            <label for="endurance">🏃 Endurance</label>
+                        </div>
+                        <div class="option-item">
+                            <input type="radio" id="toning" name="goal" value="toning" required>
+                            <label for="toning">✨ Toning</label>
+                        </div>
+                        <div class="option-item">
+                            <input type="radio" id="health" name="goal" value="health" required>
+                            <label for="health">❤️ General Health</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Current Fitness Level *</label>
+                    <div class="option-grid">
+                        <div class="option-item">
+                            <input type="radio" id="beginner" name="fitnessLevel" value="beginner" required>
+                            <label for="beginner">🌱 Beginner</label>
+                        </div>
+                        <div class="option-item">
+                            <input type="radio" id="intermediate" name="fitnessLevel" value="intermediate" required>
+                            <label for="intermediate">🔥 Intermediate</label>
+                        </div>
+                        <div class="option-item">
+                            <input type="radio" id="advanced" name="fitnessLevel" value="advanced" required>
+                            <label for="advanced">⚡ Advanced</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Preferences -->
+            <div class="form-section">
+                <h3>Preferences</h3>
+                <div class="form-group">
+                    <label for="preferredTime">Preferred Workout Time</label>
+                    <select id="preferredTime" name="preferredTime" class="form-control">
+                        <option value="06:00">6:00 AM</option>
+                        <option value="07:00" selected>7:00 AM</option>
+                        <option value="08:00">8:00 AM</option>
+                        <option value="12:00">12:00 PM</option>
+                        <option value="17:00">5:00 PM</option>
+                        <option value="18:00">6:00 PM</option>
+                        <option value="19:00">7:00 PM</option>
+                        <option value="20:00">8:00 PM</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Available Equipment</label>
+                    <div class="option-grid">
+                        <div class="option-item">
+                            <input type="radio" id="noEquipment" name="equipment" value="none">
+                            <label for="noEquipment">🤲 No Equipment</label>
+                        </div>
+                        <div class="option-item">
+                            <input type="radio" id="basicEquipment" name="equipment" value="basic" checked>
+                            <label for="basicEquipment">🏠 Basic (Dumbbells)</label>
+                        </div>
+                        <div class="option-item">
+                            <input type="radio" id="fullGym" name="equipment" value="gym">
+                            <label for="fullGym">🏋️ Full Gym</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Budget for Nutrition</label>
+                    <div class="option-grid">
+                        <div class="option-item">
+                            <input type="radio" id="basic" name="economicLevel" value="basic">
+                            <label for="basic">💰 Basic ($5-8/day)</label>
+                        </div>
+                        <div class="option-item">
+                            <input type="radio" id="medium" name="economicLevel" value="medium" checked>
+                            <label for="medium">💎 Medium ($10-15/day)</label>
+                        </div>
+                        <div class="option-item">
+                            <input type="radio" id="premium" name="economicLevel" value="premium">
+                            <label for="premium">👑 Premium ($20+/day)</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="workoutDays">Workout Days per Week</label>
+                    <select id="workoutDays" name="workoutDays" class="form-control">
+                        <option value="3">3 days</option>
+                        <option value="4">4 days</option>
+                        <option value="5" selected>5 days</option>
+                        <option value="6">6 days</option>
+                        <option value="7">7 days</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Notifications</label>
+                    <div class="option-grid">
+                        <div class="option-item">
+                            <input type="radio" id="notificationsOn" name="notifications" value="on" checked>
+                            <label for="notificationsOn">🔔 Enable</label>
+                        </div>
+                        <div class="option-item">
+                            <input type="radio" id="notificationsOff" name="notifications" value="off">
+                            <label for="notificationsOff">🔕 Disable</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary btn-large">
+                    Create My Plan
+                </button>
+            </div>
+            
+            <div style="text-align: center; margin-top: 20px; color: #666;">
+                <p>All fields marked with * are required</p>
+                <p style="margin-top: 10px;">
+                    Your data is stored securely and used only to create your personalized fitness plan.
+                </p>
+            </div>
+        </form>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Training Club. All rights reserved. designed by <a href="https://linktr.ee/Mustafa_Bemo" target="_blank" style="color: var(--primary); text-decoration: none;">mustafa</a></p>
+        </div>
+    </footer>
+
+    <script src="static/js/app.js"></script>
+</body>
+</html>

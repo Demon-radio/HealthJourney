@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Training Plan | Training Club</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏋️</text></svg>">
+</head>
+<body>
+    <div class="notification-center" id="notificationCenter"></div>
+    
+    <header>
+        <div class="container">
+            <button class="back-btn" onclick="window.location.href='index.html'">
+                ← Home
+            </button>
+            <div>
+                <h1>Your Training Plan</h1>
+                <p>Personalized workout and nutrition guide</p>
+            </div>
+            <button class="logout-btn" onclick="logout()">
+                Logout →
+            </button>
+        </div>
+    </header>
+    
+    <div class="container">
+        <!-- User Info Section -->
+        <div class="user-info">
+            <div class="user-basic">
+                <div class="user-avatar">U</div>
+                <div class="user-details">
+                    <div class="user-name">
+                        <h2>Loading...</h2>
+                    </div>
+                    <div class="user-goal">
+                        <p>Goal: Loading...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="user-stats">
+                <div class="stat-item">
+                    <div class="stat-value">--</div>
+                    <div class="stat-label">BMI</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">--</div>
+                    <div class="stat-label">Age</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">--</div>
+                    <div class="stat-label">Height (cm)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">--</div>
+                    <div class="stat-label">Weight (kg)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BMI Information -->
+        <div class="bmi-container" id="bmiContainer">
+            <div class="bmi-header">
+                <h2>Your BMI Analysis</h2>
+                <div class="bmi-value" id="bmiValue">--</div>
+            </div>
+            <div class="bmi-scale">
+                <div class="bmi-marker" id="bmiMarker"></div>
+            </div>
+            <div class="bmi-labels">
+                <span>Underweight</span>
+                <span>Normal</span>
+                <span>Overweight</span>
+                <span>Obese</span>
+            </div>
+            <div class="bmi-category" id="bmiCategory">
+                <h3>Category: <span id="categoryText">--</span></h3>
+                <p id="bmiRecommendation">Loading recommendations...</p>
+            </div>
+        </div>
+
+        <!-- Workout Plan Overview -->
+        <div class="plan-overview">
+            <div class="overview-card">
+                <div class="overview-icon">🏋️</div>
+                <div class="overview-content">
+                    <h3>Workout Plan</h3>
+                    <p>Loading...</p>
+                </div>
+                <div class="overview-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">💪</span>
+                        <div>
+                            <strong>Progressive Training</strong>
+                            <p>Starts with 14 exercises, increases difficulty every 2 days</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">⏱️</span>
+                        <div>
+                            <strong>Time Tracking</strong>
+                            <p>Real-time calorie burn calculation based on duration</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">📈</span>
+                        <div>
+                            <strong>Progress Monitoring</strong>
+                            <p>Visual progress tracking with day completion markers</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🎯</span>
+                        <div>
+                            <strong>Goal-Oriented</strong>
+                            <p>Exercises tailored to your specific fitness goals</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="overview-card">
+                <div class="overview-icon">🥗</div>
+                <div class="overview-content">
+                    <h3>Nutrition Plan</h3>
+                    <p>Loading...</p>
+                </div>
+                <div class="overview-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">💎</span>
+                        <div>
+                            <strong>3-Tier System</strong>
+                            <p>Choose from Basic, Medium, or Premium meal plans</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🔢</span>
+                        <div>
+                            <strong>Calorie Calculation</strong>
+                            <p>Precise daily calorie needs based on your BMR and goals</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🍽️</span>
+                        <div>
+                            <strong>Complete Meals</strong>
+                            <p>Breakfast, lunch, dinner, and snack options with instructions</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">💰</span>
+                        <div>
+                            <strong>Budget-Friendly</strong>
+                            <p>Plans designed to fit your economic preferences</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Workout Container (dynamically populated) -->
+        <div class="workout-container">
+            <!-- Content will be loaded by JavaScript -->
+        </div>
+
+        <!-- Nutrition Container (dynamically populated) -->
+        <div class="nutrition-container">
+            <!-- Content will be loaded by JavaScript -->
+        </div>
+
+        <!-- Emergency Contact Section -->
+        <div class="emergency-section">
+            <h3>🚨 Quick Access</h3>
+            <div>
+                <a href="tel:911" class="btn btn-danger">Emergency: 911</a>
+                <a href="tel:211" class="btn btn-warning">Health Info: 211</a>
+                <a href="#" class="btn btn-info" onclick="app.showNotification('Help', 'Contact support for assistance with the app.', 'info')">App Support</a>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Training Club. All rights reserved. designed by <a href="https://linktr.ee/Mustafa_Bemo" target="_blank" style="color: var(--primary); text-decoration: none;">mustafa</a></p>
+            <div class="footer-tagline">
+                Progressive workouts • Smart nutrition • Real-time tracking
+            </div>
+        </div>
+    </footer>
+
+    <script src="static/js/app.js"></script>
+    <script>
+        // Initialize BMI display when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                if (app && app.currentUser && app.currentUser.bmi) {
+                    updateBMIDisplay(app.currentUser.bmi);
+                }
+            }, 1000);
+        });
+        
+        function updateBMIDisplay(bmi) {
+            const bmiValue = document.getElementById('bmiValue');
+            const bmiMarker = document.getElementById('bmiMarker');
+            const categoryText = document.getElementById('categoryText');
+            const bmiRecommendation = document.getElementById('bmiRecommendation');
+            
+            if (bmiValue) bmiValue.textContent = bmi;
+            
+            let category, color, recommendation, position;
+            
+            if (bmi < 18.5) {
+                category = 'Underweight';
+                color = '#ff9800';
+                recommendation = 'Focus on healthy weight gain through balanced nutrition and strength training.';
+                position = '10%';
+            } else if (bmi < 25) {
+                category = 'Normal';
+                color = '#4caf50';
+                recommendation = 'Maintain your healthy weight through regular exercise and balanced nutrition.';
+                position = '35%';
+            } else if (bmi < 30) {
+                category = 'Overweight';
+                color = '#ff9800';
+                recommendation = 'Focus on gradual weight loss through consistent exercise and nutrition.';
+                position = '65%';
+            } else {
+                category = 'Obese';
+                color = '#f44336';
+                recommendation = 'Focus on gradual weight loss through consistent exercise and nutrition. Consider consulting a healthcare provider.';
+                position = '85%';
+            }
+            
+            if (categoryText) categoryText.textContent = category;
+            if (bmiRecommendation) bmiRecommendation.textContent = recommendation;
+            if (bmiMarker) {
+                bmiMarker.style.left = position;
+                bmiMarker.style.backgroundColor = color;
+            }
+            
+            // Update category color
+            const categoryElement = document.getElementById('categoryText');
+            if (categoryElement) {
+                categoryElement.style.color = color;
+            }
+        }
+    </script>
+</body>
+</html>
