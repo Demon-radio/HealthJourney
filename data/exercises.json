@@ -1,0 +1,284 @@
+{
+  "exercises": [
+    {
+      "id": "push_up_m_b",
+      "name": "Push-ups",
+      "level": "beginner",
+      "gender": "male",
+      "goal": "general",
+      "duration": 30,
+      "reps": "10-15",
+      "sets": 3,
+      "met": 3.8,
+      "instructions": [
+        "Start in plank position with hands shoulder-width apart",
+        "Keep your body in straight line from head to heels",
+        "Lower chest to ground while keeping elbows close to body",
+        "Push back up to starting position",
+        "Maintain steady breathing throughout"
+      ],
+      "tips": "If too difficult, start with knee push-ups",
+      "video_description": "Proper push-up form demonstration for beginners"
+    },
+    {
+      "id": "squat_m_b",
+      "name": "Bodyweight Squats",
+      "level": "beginner",
+      "gender": "male",
+      "goal": "general",
+      "duration": 45,
+      "reps": "15-20",
+      "sets": 3,
+      "met": 5.0,
+      "instructions": [
+        "Stand with feet shoulder-width apart",
+        "Lower body as if sitting back into chair",
+        "Keep chest up and knees behind toes",
+        "Go down until thighs parallel to ground",
+        "Push through heels to return to start"
+      ],
+      "tips": "Keep weight on heels, not toes",
+      "video_description": "Perfect squat technique for building leg strength"
+    },
+    {
+      "id": "plank_m_b",
+      "name": "Plank Hold",
+      "level": "beginner",
+      "gender": "both",
+      "goal": "general",
+      "duration": 60,
+      "reps": "30-60 seconds",
+      "sets": 3,
+      "met": 3.5,
+      "instructions": [
+        "Start in push-up position on forearms",
+        "Keep body straight from head to heels",
+        "Engage core muscles tightly",
+        "Hold position without sagging hips",
+        "Breathe normally throughout hold"
+      ],
+      "tips": "Start with shorter holds and build up time",
+      "video_description": "Core strengthening plank hold technique"
+    },
+    {
+      "id": "jumping_jacks_f_b",
+      "name": "Jumping Jacks",
+      "level": "beginner",
+      "gender": "female",
+      "goal": "weightLoss",
+      "duration": 60,
+      "reps": "20-30",
+      "sets": 3,
+      "met": 7.3,
+      "instructions": [
+        "Start standing with feet together, arms at sides",
+        "Jump feet apart while raising arms overhead",
+        "Jump back to starting position",
+        "Maintain steady rhythm",
+        "Land softly on balls of feet"
+      ],
+      "tips": "Keep movements controlled and land softly",
+      "video_description": "Cardio jumping jacks for weight loss"
+    },
+    {
+      "id": "lunges_f_b",
+      "name": "Forward Lunges",
+      "level": "beginner",
+      "gender": "female",
+      "goal": "toning",
+      "duration": 45,
+      "reps": "10-12 each leg",
+      "sets": 3,
+      "met": 4.0,
+      "instructions": [
+        "Stand tall with feet hip-width apart",
+        "Step forward with right foot",
+        "Lower body until both knees at 90 degrees",
+        "Push back to starting position",
+        "Repeat with left leg"
+      ],
+      "tips": "Keep front knee over ankle, not past toes",
+      "video_description": "Leg toning lunges with proper form"
+    },
+    {
+      "id": "mountain_climbers_m_i",
+      "name": "Mountain Climbers",
+      "level": "intermediate",
+      "gender": "male",
+      "goal": "endurance",
+      "duration": 45,
+      "reps": "20-30 each leg",
+      "sets": 4,
+      "met": 8.0,
+      "instructions": [
+        "Start in plank position",
+        "Bring right knee toward chest",
+        "Quickly switch legs",
+        "Continue alternating at fast pace",
+        "Keep core engaged throughout"
+      ],
+      "tips": "Maintain plank position, don't let hips rise",
+      "video_description": "High-intensity mountain climber cardio workout"
+    },
+    {
+      "id": "burpees_m_i",
+      "name": "Burpees",
+      "level": "intermediate",
+      "gender": "both",
+      "goal": "general",
+      "duration": 60,
+      "reps": "8-12",
+      "sets": 3,
+      "met": 9.5,
+      "instructions": [
+        "Start standing, drop into squat",
+        "Place hands on ground, jump feet back to plank",
+        "Do push-up (optional)",
+        "Jump feet back to squat position",
+        "Jump up with arms overhead"
+      ],
+      "tips": "Modify by stepping back instead of jumping",
+      "video_description": "Full-body burpee exercise breakdown"
+    },
+    {
+      "id": "glute_bridges_f_i",
+      "name": "Glute Bridges",
+      "level": "intermediate",
+      "gender": "female",
+      "goal": "toning",
+      "duration": 30,
+      "reps": "15-20",
+      "sets": 3,
+      "met": 3.0,
+      "instructions": [
+        "Lie on back with knees bent",
+        "Feet flat on ground, arms at sides",
+        "Squeeze glutes and lift hips up",
+        "Form straight line from knees to shoulders",
+        "Lower back down slowly"
+      ],
+      "tips": "Squeeze glutes at top, don't overarch back",
+      "video_description": "Glute activation and toning exercise"
+    },
+    {
+      "id": "deadlifts_m_a",
+      "name": "Single Leg Deadlifts",
+      "level": "advanced",
+      "gender": "male",
+      "goal": "muscleGain",
+      "duration": 60,
+      "reps": "8-10 each leg",
+      "sets": 4,
+      "met": 6.0,
+      "instructions": [
+        "Stand on one leg with slight knee bend",
+        "Hinge at hips, lower torso toward ground",
+        "Extend free leg behind for balance",
+        "Return to standing by driving hips forward",
+        "Switch legs after completing reps"
+      ],
+      "tips": "Focus on hip hinge movement, not knee bend",
+      "video_description": "Advanced single-leg strength exercise"
+    },
+    {
+      "id": "pistol_squats_m_a",
+      "name": "Pistol Squats",
+      "level": "advanced",
+      "gender": "both",
+      "goal": "muscleGain",
+      "duration": 90,
+      "reps": "5-8 each leg",
+      "sets": 3,
+      "met": 7.0,
+      "instructions": [
+        "Stand on one leg, extend other leg forward",
+        "Lower down into single-leg squat",
+        "Keep extended leg straight and off ground",
+        "Go as low as possible while maintaining form",
+        "Push through heel to return to start"
+      ],
+      "tips": "Use assistance or box to build up strength",
+      "video_description": "Advanced single-leg squat progression"
+    },
+    {
+      "id": "plyometric_pushups_m_a",
+      "name": "Plyometric Push-ups",
+      "level": "advanced",
+      "gender": "male",
+      "goal": "endurance",
+      "duration": 45,
+      "reps": "6-10",
+      "sets": 4,
+      "met": 8.5,
+      "instructions": [
+        "Start in push-up position",
+        "Lower chest to ground",
+        "Push up explosively so hands leave ground",
+        "Land softly and immediately go into next rep",
+        "Maintain control throughout movement"
+      ],
+      "tips": "Build up explosive power gradually",
+      "video_description": "Explosive plyometric push-up training"
+    },
+    {
+      "id": "jump_squats_f_a",
+      "name": "Jump Squats",
+      "level": "advanced",
+      "gender": "female",
+      "goal": "weightLoss",
+      "duration": 45,
+      "reps": "12-15",
+      "sets": 4,
+      "met": 9.0,
+      "instructions": [
+        "Start in squat position",
+        "Lower into deep squat",
+        "Explode up jumping as high as possible",
+        "Land softly in squat position",
+        "Immediately go into next rep"
+      ],
+      "tips": "Focus on soft landings to protect knees",
+      "video_description": "High-intensity jump squat cardio"
+    },
+    {
+      "id": "side_plank_f_i",
+      "name": "Side Plank",
+      "level": "intermediate",
+      "gender": "female",
+      "goal": "toning",
+      "duration": 60,
+      "reps": "30-45 seconds each side",
+      "sets": 3,
+      "met": 4.5,
+      "instructions": [
+        "Lie on side with forearm on ground",
+        "Stack feet and lift hips off ground",
+        "Create straight line from head to feet",
+        "Hold position engaging core",
+        "Switch to other side"
+      ],
+      "tips": "Keep hips up and body straight",
+      "video_description": "Core strengthening side plank exercise"
+    },
+    {
+      "id": "tricep_dips_m_i",
+      "name": "Tricep Dips",
+      "level": "intermediate",
+      "gender": "male",
+      "goal": "muscleGain",
+      "duration": 45,
+      "reps": "10-15",
+      "sets": 3,
+      "met": 4.0,
+      "instructions": [
+        "Sit on edge of chair or bench",
+        "Place hands beside hips, fingers forward",
+        "Slide forward off edge, support weight on arms",
+        "Lower body by bending elbows",
+        "Push back up to starting position"
+      ],
+      "tips": "Keep elbows close to body, don't flare out",
+      "video_description": "Tricep strengthening dip exercise"
+    }
+  ]
+}

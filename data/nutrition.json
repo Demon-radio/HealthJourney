@@ -1,0 +1,373 @@
+{
+  "tiers": {
+    "basic": {
+      "name": "Basic Plan",
+      "description": "Affordable, nutritious meals with simple ingredients",
+      "daily_budget": "$5-8",
+      "meals": {
+        "breakfast": [
+          {
+            "name": "Oatmeal with Banana",
+            "ingredients": ["Rolled oats", "Banana", "Milk", "Honey"],
+            "calories": 320,
+            "protein": 12,
+            "carbs": 58,
+            "fats": 6,
+            "prep_time": "5 minutes",
+            "instructions": "Cook oats with milk, top with sliced banana and honey"
+          },
+          {
+            "name": "Scrambled Eggs with Toast",
+            "ingredients": ["2 eggs", "Whole grain bread", "Butter", "Salt"],
+            "calories": 280,
+            "protein": 18,
+            "carbs": 24,
+            "fats": 14,
+            "prep_time": "8 minutes",
+            "instructions": "Scramble eggs in butter, serve with toasted bread"
+          },
+          {
+            "name": "Greek Yogurt with Berries",
+            "ingredients": ["Plain Greek yogurt", "Mixed berries", "Granola"],
+            "calories": 250,
+            "protein": 20,
+            "carbs": 35,
+            "fats": 4,
+            "prep_time": "2 minutes",
+            "instructions": "Mix yogurt with berries, top with granola"
+          }
+        ],
+        "lunch": [
+          {
+            "name": "Chicken Rice Bowl",
+            "ingredients": ["Chicken breast", "Brown rice", "Mixed vegetables", "Soy sauce"],
+            "calories": 450,
+            "protein": 35,
+            "carbs": 55,
+            "fats": 8,
+            "prep_time": "20 minutes",
+            "instructions": "Cook chicken and rice, steam vegetables, combine with sauce"
+          },
+          {
+            "name": "Tuna Sandwich",
+            "ingredients": ["Canned tuna", "Whole grain bread", "Mayo", "Lettuce", "Tomato"],
+            "calories": 380,
+            "protein": 28,
+            "carbs": 42,
+            "fats": 12,
+            "prep_time": "10 minutes",
+            "instructions": "Mix tuna with mayo, assemble sandwich with vegetables"
+          },
+          {
+            "name": "Bean and Rice Bowl",
+            "ingredients": ["Black beans", "Brown rice", "Salsa", "Avocado"],
+            "calories": 420,
+            "protein": 16,
+            "carbs": 72,
+            "fats": 10,
+            "prep_time": "15 minutes",
+            "instructions": "Heat beans and rice, top with salsa and avocado"
+          }
+        ],
+        "dinner": [
+          {
+            "name": "Baked Chicken with Vegetables",
+            "ingredients": ["Chicken thigh", "Sweet potato", "Broccoli", "Olive oil"],
+            "calories": 480,
+            "protein": 32,
+            "carbs": 45,
+            "fats": 18,
+            "prep_time": "35 minutes",
+            "instructions": "Season and bake chicken with vegetables drizzled in olive oil"
+          },
+          {
+            "name": "Pasta with Meat Sauce",
+            "ingredients": ["Whole grain pasta", "Ground turkey", "Tomato sauce", "Vegetables"],
+            "calories": 520,
+            "protein": 28,
+            "carbs": 68,
+            "fats": 14,
+            "prep_time": "25 minutes",
+            "instructions": "Cook pasta, brown turkey, simmer with sauce and vegetables"
+          },
+          {
+            "name": "Fish with Quinoa",
+            "ingredients": ["White fish fillet", "Quinoa", "Green beans", "Lemon"],
+            "calories": 440,
+            "protein": 30,
+            "carbs": 48,
+            "fats": 12,
+            "prep_time": "30 minutes",
+            "instructions": "Bake seasoned fish, cook quinoa, steam green beans"
+          }
+        ],
+        "snacks": [
+          {
+            "name": "Apple with Peanut Butter",
+            "calories": 190,
+            "protein": 8,
+            "prep_time": "1 minute"
+          },
+          {
+            "name": "Carrots with Hummus",
+            "calories": 120,
+            "protein": 4,
+            "prep_time": "2 minutes"
+          },
+          {
+            "name": "Banana with Nuts",
+            "calories": 180,
+            "protein": 6,
+            "prep_time": "1 minute"
+          }
+        ]
+      }
+    },
+    "medium": {
+      "name": "Medium Plan",
+      "description": "Balanced nutrition with variety and convenience",
+      "daily_budget": "$10-15",
+      "meals": {
+        "breakfast": [
+          {
+            "name": "Protein Smoothie Bowl",
+            "ingredients": ["Protein powder", "Mixed berries", "Spinach", "Almond milk", "Granola"],
+            "calories": 380,
+            "protein": 25,
+            "carbs": 45,
+            "fats": 12,
+            "prep_time": "8 minutes",
+            "instructions": "Blend protein powder with fruits and spinach, top with granola"
+          },
+          {
+            "name": "Avocado Toast with Egg",
+            "ingredients": ["Multigrain bread", "Avocado", "Poached egg", "Cherry tomatoes"],
+            "calories": 420,
+            "protein": 18,
+            "carbs": 38,
+            "fats": 22,
+            "prep_time": "12 minutes",
+            "instructions": "Toast bread, mash avocado, top with poached egg and tomatoes"
+          },
+          {
+            "name": "Quinoa Breakfast Bowl",
+            "ingredients": ["Quinoa", "Almond milk", "Berries", "Nuts", "Honey"],
+            "calories": 350,
+            "protein": 14,
+            "carbs": 52,
+            "fats": 10,
+            "prep_time": "15 minutes",
+            "instructions": "Cook quinoa in almond milk, top with berries and nuts"
+          }
+        ],
+        "lunch": [
+          {
+            "name": "Salmon Quinoa Salad",
+            "ingredients": ["Grilled salmon", "Quinoa", "Mixed greens", "Vegetables", "Olive oil dressing"],
+            "calories": 520,
+            "protein": 32,
+            "carbs": 48,
+            "fats": 22,
+            "prep_time": "25 minutes",
+            "instructions": "Grill salmon, prepare quinoa salad with fresh vegetables"
+          },
+          {
+            "name": "Turkey and Hummus Wrap",
+            "ingredients": ["Whole wheat tortilla", "Turkey breast", "Hummus", "Vegetables", "Spinach"],
+            "calories": 450,
+            "protein": 28,
+            "carbs": 52,
+            "fats": 15,
+            "prep_time": "10 minutes",
+            "instructions": "Spread hummus on tortilla, add turkey and vegetables, roll up"
+          },
+          {
+            "name": "Lentil Buddha Bowl",
+            "ingredients": ["Red lentils", "Brown rice", "Roasted vegetables", "Tahini dressing"],
+            "calories": 480,
+            "protein": 20,
+            "carbs": 68,
+            "fats": 16,
+            "prep_time": "30 minutes",
+            "instructions": "Cook lentils and rice, roast vegetables, drizzle with tahini"
+          }
+        ],
+        "dinner": [
+          {
+            "name": "Herb-Crusted Chicken with Sweet Potato",
+            "ingredients": ["Chicken breast", "Sweet potato", "Asparagus", "Herbs", "Olive oil"],
+            "calories": 520,
+            "protein": 38,
+            "carbs": 42,
+            "fats": 20,
+            "prep_time": "40 minutes",
+            "instructions": "Season chicken with herbs, roast with sweet potato and asparagus"
+          },
+          {
+            "name": "Shrimp Stir-Fry",
+            "ingredients": ["Shrimp", "Brown rice", "Mixed vegetables", "Ginger", "Soy sauce"],
+            "calories": 460,
+            "protein": 30,
+            "carbs": 55,
+            "fats": 12,
+            "prep_time": "20 minutes",
+            "instructions": "Stir-fry shrimp with vegetables and ginger, serve over rice"
+          },
+          {
+            "name": "Mediterranean Fish",
+            "ingredients": ["White fish", "Quinoa", "Olives", "Tomatoes", "Feta cheese"],
+            "calories": 500,
+            "protein": 34,
+            "carbs": 45,
+            "fats": 20,
+            "prep_time": "30 minutes",
+            "instructions": "Bake fish with Mediterranean flavors, serve with quinoa"
+          }
+        ],
+        "snacks": [
+          {
+            "name": "Greek Yogurt with Nuts",
+            "calories": 220,
+            "protein": 15,
+            "prep_time": "2 minutes"
+          },
+          {
+            "name": "Protein Bars",
+            "calories": 200,
+            "protein": 12,
+            "prep_time": "0 minutes"
+          },
+          {
+            "name": "Mixed Berry Smoothie",
+            "calories": 180,
+            "protein": 8,
+            "prep_time": "5 minutes"
+          }
+        ]
+      }
+    },
+    "premium": {
+      "name": "Premium Plan",
+      "description": "Gourmet nutrition with organic ingredients and meal variety",
+      "daily_budget": "$18-25",
+      "meals": {
+        "breakfast": [
+          {
+            "name": "Organic Acai Bowl",
+            "ingredients": ["Acai puree", "Organic granola", "Fresh berries", "Coconut flakes", "Chia seeds"],
+            "calories": 450,
+            "protein": 18,
+            "carbs": 58,
+            "fats": 18,
+            "prep_time": "10 minutes",
+            "instructions": "Blend acai with minimal liquid, top with organic granola and superfoods"
+          },
+          {
+            "name": "Smoked Salmon Bagel",
+            "ingredients": ["Everything bagel", "Cream cheese", "Smoked salmon", "Capers", "Red onion"],
+            "calories": 520,
+            "protein": 25,
+            "carbs": 48,
+            "fats": 24,
+            "prep_time": "8 minutes",
+            "instructions": "Toast bagel, spread cream cheese, top with salmon and garnishes"
+          },
+          {
+            "name": "Chia Pudding Parfait",
+            "ingredients": ["Chia seeds", "Coconut milk", "Maple syrup", "Fresh fruits", "Nuts"],
+            "calories": 380,
+            "protein": 12,
+            "carbs": 42,
+            "fats": 20,
+            "prep_time": "5 minutes + overnight",
+            "instructions": "Mix chia with coconut milk overnight, layer with fruits and nuts"
+          }
+        ],
+        "lunch": [
+          {
+            "name": "Grass-Fed Steak Salad",
+            "ingredients": ["Grass-fed steak", "Organic mixed greens", "Avocado", "Goat cheese", "Balsamic dressing"],
+            "calories": 580,
+            "protein": 35,
+            "carbs": 25,
+            "fats": 38,
+            "prep_time": "20 minutes",
+            "instructions": "Grill steak to preference, assemble salad with premium ingredients"
+          },
+          {
+            "name": "Quinoa Sushi Bowl",
+            "ingredients": ["Quinoa", "Sashimi-grade tuna", "Avocado", "Cucumber", "Sriracha mayo"],
+            "calories": 520,
+            "protein": 28,
+            "carbs": 48,
+            "fats": 22,
+            "prep_time": "25 minutes",
+            "instructions": "Prepare seasoned quinoa, arrange with fresh fish and vegetables"
+          },
+          {
+            "name": "Organic Power Bowl",
+            "ingredients": ["Organic kale", "Quinoa", "Chickpeas", "Sweet potato", "Tahini dressing"],
+            "calories": 480,
+            "protein": 18,
+            "carbs": 62,
+            "fats": 18,
+            "prep_time": "35 minutes",
+            "instructions": "Massage kale, roast vegetables, combine with protein-rich components"
+          }
+        ],
+        "dinner": [
+          {
+            "name": "Pan-Seared Halibut",
+            "ingredients": ["Halibut fillet", "Wild rice", "Roasted vegetables", "Herb butter"],
+            "calories": 580,
+            "protein": 42,
+            "carbs": 45,
+            "fats": 22,
+            "prep_time": "45 minutes",
+            "instructions": "Pan-sear halibut perfectly, serve with wild rice and seasonal vegetables"
+          },
+          {
+            "name": "Organic Grass-Fed Burger",
+            "ingredients": ["Grass-fed beef", "Sweet potato fries", "Organic greens", "Avocado"],
+            "calories": 620,
+            "protein": 38,
+            "carbs": 52,
+            "fats": 28,
+            "prep_time": "30 minutes",
+            "instructions": "Grill premium burger, bake sweet potato fries, assemble with fresh toppings"
+          },
+          {
+            "name": "Duck Breast with Quinoa",
+            "ingredients": ["Duck breast", "Tri-color quinoa", "Roasted Brussels sprouts", "Cherry sauce"],
+            "calories": 550,
+            "protein": 35,
+            "carbs": 48,
+            "fats": 24,
+            "prep_time": "50 minutes",
+            "instructions": "Score and sear duck breast, prepare quinoa and roasted vegetables"
+          }
+        ],
+        "snacks": [
+          {
+            "name": "Organic Nut Mix",
+            "calories": 250,
+            "protein": 10,
+            "prep_time": "0 minutes"
+          },
+          {
+            "name": "Kale Chips",
+            "calories": 120,
+            "protein": 6,
+            "prep_time": "25 minutes"
+          },
+          {
+            "name": "Protein Smoothie",
+            "calories": 280,
+            "protein": 20,
+            "prep_time": "5 minutes"
+          }
+        ]
+      }
+    }
+  }
+}
