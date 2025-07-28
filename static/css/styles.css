@@ -656,6 +656,112 @@ header p {
     padding: 15px;
     border-radius: 10px;
     font-size: 0.9rem;
+    color: var(--dark);
+}
+
+/* BMI Category Styling */
+.bmi-category {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+.bmi-category h3 {
+    margin: 0 0 10px 0;
+    color: var(--dark);
+    font-size: 1.1rem;
+}
+
+.bmi-category #categoryText {
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.bmi-category p {
+    margin: 0;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* Plan Overview Styling */
+.plan-overview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.overview-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    transition: transform 0.3s ease;
+}
+
+.overview-card:hover {
+    transform: translateY(-5px);
+}
+
+.overview-icon {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.overview-content {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.overview-content h3 {
+    margin: 0 0 10px 0;
+    color: var(--primary);
+    font-size: 1.4rem;
+}
+
+.overview-content p {
+    margin: 0;
+    color: #666;
+}
+
+.overview-features {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.feature-item .feature-icon {
+    font-size: 1.2rem;
+    min-width: 25px;
+}
+
+.feature-item div {
+    flex: 1;
+}
+
+.feature-item strong {
+    display: block;
+    color: var(--dark);
+    font-size: 0.9rem;
+    margin-bottom: 2px;
+}
+
+.feature-item p {
+    margin: 0;
+    color: #666;
+    font-size: 0.8rem;
+    line-height: 1.3;
 }
 
 /* Reminder Banner */
@@ -1028,6 +1134,11 @@ footer {
     
     /* Plan page responsive fixes */
     .plan-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .plan-overview {
         grid-template-columns: 1fr;
         gap: 20px;
     }
