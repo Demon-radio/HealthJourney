@@ -396,6 +396,18 @@ function createExerciseCard(exercise, index) {
     card.setAttribute('data-exercise-id', exercise.id);
     
     const status = exerciseProgress[exercise.id] || 'pending';
+    const userData = Utils.loadFromStorage('userData');
+    const gender = userData?.gender || 'male';
+    
+    // Get gender-specific instructions
+    let instructions = exercise.instructions;
+    if (typeof instructions === 'object' && instructions[gender]) {
+        instructions = instructions[gender];
+    } else if (Array.isArray(instructions)) {
+        // Already an array, use as is
+    } else {
+        instructions = ['Follow the exercise demonstration'];
+    }
     
     card.innerHTML = `
         <div class="exercise-header ${status}">
@@ -406,29 +418,33 @@ function createExerciseCard(exercise, index) {
         </div>
         <div class="exercise-body">
             <div class="exercise-info">
-                <span><strong>Duration:</strong> ${exercise.duration}s</span>
-                <span><strong>Sets:</strong> ${exercise.sets}</span>
-                <span><strong>Reps:</strong> ${exercise.reps}</span>
+                <span><strong>Duration:</strong> ${exercise.duration || 60}s</span>
+                <span><strong>Level:</strong> ${exercise.level || 'beginner'}</span>
+                <span><strong>Focus:</strong> ${exercise.goal || 'general'}</span>
             </div>
             
             <div class="exercise-instructions">
                 <h4>Instructions:</h4>
                 <ol>
-                    ${exercise.instructions.map(instruction => `<li>${instruction}</li>`).join('')}
+                    ${instructions.map(instruction => `<li>${instruction}</li>`).join('')}
                 </ol>
             </div>
             
-            <div class="exercise-tips">
-                <strong>Tip:</strong> ${exercise.tips}
-            </div>
+            ${exercise.tips ? `
+                <div class="exercise-tips">
+                    <strong>Tip:</strong> ${exercise.tips}
+                </div>
+            ` : ''}
             
-            <div class="exercise-video-info">
-                <h4>Video Guide:</h4>
-                <p><em>${exercise.video_description}</em></p>
-                <p style="font-size: 0.9rem; color: #666;">
-                    📹 Professional demonstration video showing proper form and technique
-                </p>
-            </div>
+            ${exercise.video_description ? `
+                <div class="exercise-video-info">
+                    <h4>Video Guide:</h4>
+                    <p><em>${exercise.video_description}</em></p>
+                    <p style="font-size: 0.9rem; color: #666;">
+                        📹 Professional demonstration video showing proper form and technique
+                    </p>
+                </div>
+            ` : ''}
             
             <div class="exercise-timer" id="timer-${exercise.id}">
                 <div class="timer-display">00:00</div>
@@ -500,27 +516,38 @@ function createNutritionContainer() {
 }
 
 function createMealSection(title, meals) {
+    if (!meals || !Array.isArray(meals)) {
+        return `
+            <div class="meal-section">
+                <h3>${title}</h3>
+                <p>No meals available for this section.</p>
+            </div>
+        `;
+    }
+    
     return `
         <div class="meal-section">
             <h3>${title}</h3>
             <div class="meal-options">
                 ${meals.map(meal => `
                     <div class="meal-card">
-                        <h4>${meal.name}</h4>
+                        <h4>${meal.name || 'Unnamed Meal'}</h4>
                         <div class="meal-nutrients">
-                            <span>${meal.calories} cal</span>
-                            <span>${meal.protein}g protein</span>
-                            <span>${meal.carbs}g carbs</span>
-                            <span>${meal.fats}g fats</span>
+                            <span>${meal.calories || 0} cal</span>
+                            <span>${meal.protein || 0}g protein</span>
+                            <span>${meal.carbs || 0}g carbs</span>
+                            <span>${meal.fat || 0}g fat</span>
                         </div>
                         <div class="meal-ingredients">
-                            <strong>Ingredients:</strong> ${meal.ingredients.join(', ')}
+                            <strong>Ingredients:</strong> ${meal.ingredients || 'Not specified'}
                         </div>
-                        <div style="margin-top: 10px; font-size: 0.9rem;">
-                            <strong>Prep time:</strong> ${meal.prep_time}
-                        </div>
+                        ${meal.prep_time ? `
+                            <div style="margin-top: 10px; font-size: 0.9rem;">
+                                <strong>Prep time:</strong> ${meal.prep_time}
+                            </div>
+                        ` : ''}
                         <div style="margin-top: 5px; font-size: 0.9rem; color: #666;">
-                            ${meal.instructions}
+                            ${meal.instructions || 'Follow standard preparation methods'}
                         </div>
                     </div>
                 `).join('')}
@@ -530,19 +557,36 @@ function createMealSection(title, meals) {
 }
 
 function createSnackSection(title, snacks) {
+    if (!snacks || !Array.isArray(snacks)) {
+        return `
+            <div class="meal-section">
+                <h3>${title}</h3>
+                <p>No snacks available.</p>
+            </div>
+        `;
+    }
+    
     return `
         <div class="meal-section">
             <h3>${title}</h3>
             <div class="meal-options">
                 ${snacks.map(snack => `
                     <div class="meal-card">
-                        <h4>${snack.name}</h4>
+                        <h4>${snack.name || 'Unnamed Snack'}</h4>
                         <div class="meal-nutrients">
-                            <span>${snack.calories} cal</span>
-                            <span>${snack.protein}g protein</span>
+                            <span>${snack.calories || 0} cal</span>
+                            <span>${snack.protein || 0}g protein</span>
                         </div>
-                        <div style="margin-top: 10px; font-size: 0.9rem;">
-                            <strong>Prep time:</strong> ${snack.prep_time}
+                        <div class="meal-ingredients">
+                            <strong>Ingredients:</strong> ${snack.ingredients || 'Not specified'}
+                        </div>
+                        ${snack.prep_time ? `
+                            <div style="margin-top: 10px; font-size: 0.9rem;">
+                                <strong>Prep time:</strong> ${snack.prep_time}
+                            </div>
+                        ` : ''}
+                        <div style="margin-top: 5px; font-size: 0.9rem; color: #666;">
+                            ${snack.instructions || 'Simple snack preparation'}
                         </div>
                     </div>
                 `).join('')}
@@ -724,6 +768,67 @@ async function checkDayCompletion() {
             console.error('Failed to complete day:', error);
         }
     }
+}
+
+// Missing helper functions
+function formatGoal(goal) {
+    const goalMap = {
+        'weightLoss': 'Weight Loss',
+        'muscleGain': 'Muscle Gain',
+        'endurance': 'Endurance',
+        'toning': 'Toning',
+        'health': 'General Health'
+    };
+    return goalMap[goal] || goal;
+}
+
+function getStatusIcon(status) {
+    const icons = {
+        'pending': '⏳',
+        'active': '▶️',
+        'completed': '✅',
+        'skipped': '⏭️'
+    };
+    return icons[status] || '⏳';
+}
+
+function loadProgress() {
+    const saved = Utils.loadFromStorage('exerciseProgress');
+    if (saved) {
+        exerciseProgress = saved;
+    }
+    
+    const savedDaily = Utils.loadFromStorage('dailyProgress');
+    if (savedDaily) {
+        dailyProgress = savedDaily;
+    }
+}
+
+function saveProgress() {
+    Utils.saveToStorage('exerciseProgress', exerciseProgress);
+    Utils.saveToStorage('dailyProgress', dailyProgress);
+}
+
+function setupEventListeners() {
+    // Global event listeners for exercise controls
+    window.startExercise = startExercise;
+    window.pauseExercise = pauseExercise;
+    window.resetExercise = resetExercise;
+    window.completeExercise = completeExercise;
+    window.skipExercise = skipExercise;
+    
+    // Add logout function
+    window.logout = function() {
+        if (confirm('Are you sure you want to logout? Your progress will be saved.')) {
+            localStorage.clear();
+            window.location.href = 'index.html';
+        }
+    };
+}
+
+function updateProgressInfo(workoutData) {
+    // Update any progress displays or counters
+    console.log('Progress updated:', workoutData.progress);
 }
 
 function checkWorkoutTime(userData) {
