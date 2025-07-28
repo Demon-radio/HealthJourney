@@ -2,11 +2,8 @@
   "version": 2,
   "builds": [
     {
-      "src": "app.py",
-      "use": "@vercel/python",
-      "config": {
-        "maxLambdaSize": "15mb"
-      }
+      "src": "api/index.py",
+      "use": "@vercel/python"
     }
   ],
   "routes": [
@@ -16,19 +13,11 @@
     },
     {
       "src": "/api/(.*)",
-      "dest": "/app.py"
-    },
-    {
-      "src": "/(index\\.html|profile\\.html|plan\\.html)",
-      "dest": "/$1"
-    },
-    {
-      "src": "/(.*\\.(css|js|ico|png|jpg|jpeg|gif|svg|json))",
-      "dest": "/$1"
+      "dest": "/api/index.py"
     },
     {
       "src": "/(.*)",
-      "dest": "/app.py"
+      "dest": "/api/index.py"
     }
   ]
 }
