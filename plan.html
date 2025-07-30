@@ -400,6 +400,380 @@
             text-decoration: underline;
         }
         
+        /* أنماط نظام التدريب */
+        .workout-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+        
+        .workout-modal.active {
+            display: flex;
+        }
+        
+        .workout-modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        .workout-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f8ff;
+        }
+        
+        .workout-header h2 {
+            color: #2d3748;
+            font-size: 1.8rem;
+        }
+        
+        .close-workout {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .close-workout:hover {
+            background: #ff5252;
+            transform: scale(1.1);
+        }
+        
+        .workout-progress {
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            transition: width 0.3s ease;
+        }
+        
+        .progress-text {
+            color: #718096;
+            font-weight: 600;
+        }
+        
+        .current-exercise {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .current-exercise .exercise-emoji {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+        
+        .current-exercise .exercise-name {
+            font-size: 2rem;
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+        
+        .current-exercise .exercise-instructions {
+            color: #4a5568;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f7fafc;
+            border-radius: 10px;
+        }
+        
+        .exercise-details {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: #edf2f7;
+            border-radius: 10px;
+        }
+        
+        .detail-item {
+            text-align: center;
+        }
+        
+        .detail-label {
+            display: block;
+            font-size: 0.9rem;
+            color: #718096;
+            margin-bottom: 5px;
+        }
+        
+        .detail-value {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2d3748;
+        }
+        
+        .timer-section {
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .timer-display {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #4facfe;
+            margin-bottom: 10px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .timer-label {
+            font-size: 1.1rem;
+            color: #718096;
+        }
+        
+        .workout-controls {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .workout-controls .btn {
+            min-width: 140px;
+        }
+        
+        .btn-start {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+        }
+        
+        .btn-complete {
+            background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+        }
+        
+        .btn-skip {
+            background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
+        }
+        
+        .workout-stats {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            background: #f7fafc;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .workout-stats .stat-item {
+            flex: 1;
+        }
+        
+        .workout-stats .stat-value {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4facfe;
+            margin-bottom: 5px;
+        }
+        
+        .workout-stats .stat-label {
+            font-size: 0.9rem;
+            color: #718096;
+        }
+        
+        .completion-screen {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .completion-header {
+            margin-bottom: 30px;
+        }
+        
+        .trophy-icon {
+            font-size: 5rem;
+            margin-bottom: 20px;
+        }
+        
+        .completion-header h2 {
+            font-size: 2.2rem;
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+        
+        .completion-header p {
+            font-size: 1.2rem;
+            color: #718096;
+        }
+        
+        .completion-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+            gap: 15px;
+        }
+        
+        .completion-stats .stat-card {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            flex: 1;
+            min-width: 120px;
+        }
+        
+        .completion-stats .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .completion-stats .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .completion-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .motivational-message {
+            padding: 20px;
+            background: linear-gradient(135deg, #fef5e7 0%, #fed7aa 100%);
+            border-radius: 10px;
+            color: #2d3748;
+        }
+        
+        .workout-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            z-index: 1001;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            max-width: 300px;
+        }
+        
+        .workout-notification.show {
+            transform: translateX(0);
+        }
+        
+        .workout-notification.success {
+            border-left: 4px solid #48bb78;
+            color: #2d3748;
+        }
+        
+        .workout-notification.info {
+            border-left: 4px solid #4299e1;
+            color: #2d3748;
+        }
+        
+        .workout-notification.warning {
+            border-left: 4px solid #ed8936;
+            color: #2d3748;
+        }
+        
+        .day-circle.completed {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%) !important;
+            color: white !important;
+            position: relative;
+        }
+        
+        .completed-indicator {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #f56565;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .stats-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .workout-history-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .workout-history-list h3 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .history-item {
+            background: #f7fafc;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border-left: 4px solid #4facfe;
+        }
+        
+        .history-date {
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+        
+        .history-details {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .history-details span {
+            background: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            color: #4a5568;
+            border: 1px solid #e2e8f0;
+        }
+        
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
@@ -540,8 +914,11 @@
             </div>
             
             <div style="text-align: center; margin-top: 30px;">
-                <button class="btn btn-large" onclick="startWorkout()">
+                <button class="btn btn-large" onclick="workoutSystem.startWorkout()">
                     🚀 ابدأ التمرين الآن
+                </button>
+                <button class="btn btn-large" onclick="showWorkoutHistory()" style="margin-right: 15px; background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);">
+                    📊 تاريخ التدريبات
                 </button>
             </div>
         </div>
@@ -672,10 +1049,59 @@
 
     <script src="static/js/arabic.js"></script>
     <script src="static/js/app.js"></script>
+    <script src="static/js/workout.js"></script>
     <script>
-        // وظائف التفاعل
-        function startWorkout() {
-            alert('🔥 ممتاز! ستبدأ تمارين اليوم الآن. تذكر أن تأخذ فترات راحة مناسبة بين التمارين.');
+        // عرض تاريخ التدريبات
+        function showWorkoutHistory() {
+            const workoutHistory = JSON.parse(localStorage.getItem('workoutHistory') || '{}');
+            const userStats = JSON.parse(localStorage.getItem('userStats') || '{}');
+            
+            const historyModal = document.createElement('div');
+            historyModal.className = 'workout-modal active';
+            historyModal.innerHTML = `
+                <div class="workout-modal-content">
+                    <div class="workout-header">
+                        <h2>📊 سجل التدريبات</h2>
+                        <button class="close-workout" onclick="this.closest('.workout-modal').remove()">✕</button>
+                    </div>
+                    
+                    <div class="stats-summary">
+                        <div class="stat-card">
+                            <div class="stat-number">${userStats.totalWorkouts || 0}</div>
+                            <div class="stat-label">إجمالي التدريبات</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">${Math.round((userStats.totalTime || 0) / 60)} دقيقة</div>
+                            <div class="stat-label">إجمالي الوقت</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">${Math.round(userStats.totalCalories || 0)}</div>
+                            <div class="stat-label">إجمالي السعرات</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">${userStats.currentStreak || 0}</div>
+                            <div class="stat-label">أيام متتالية</div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-history-list">
+                        <h3>آخر التدريبات</h3>
+                        ${Object.entries(workoutHistory).slice(-10).reverse().map(([date, workout]) => `
+                            <div class="history-item">
+                                <div class="history-date">${new Date(date).toLocaleDateString('ar-SA')}</div>
+                                <div class="history-details">
+                                    <span>اليوم ${workout.day}</span>
+                                    <span>${workout.exercisesCompleted} تمارين</span>
+                                    <span>${Math.round(workout.totalTime / 60)} دقيقة</span>
+                                    <span>${workout.caloriesBurned} سعرة</span>
+                                </div>
+                            </div>
+                        `).join('') || '<p style="text-align: center; color: #718096;">لا توجد تدريبات مسجلة بعد</p>'}
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(historyModal);
         }
         
         function viewNutritionDetails() {
