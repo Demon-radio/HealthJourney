@@ -1,0 +1,29 @@
+[build]
+  command = "echo 'Build complete - Fitness Training App ready'"
+  publish = "."
+
+[build.environment]
+  PYTHON_VERSION = "3.9"
+
+[functions]
+  directory = "netlify/functions"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/profile.html"
+  to = "/profile.html"
+  status = 200
+
+[[redirects]]
+  from = "/plan.html"
+  to = "/plan.html"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
