@@ -193,11 +193,80 @@ class WorkoutSystem {
         
         startBtn.style.display = 'none';
         completeBtn.style.display = 'inline-block';
-        timerLabel.textContent = 'جاري التمرين...';
+        
+        // إذا كان التمرين بالتكرارات، نظام العد التلقائي
+        if (exercise.reps > 0) {
+            this.startRepCountingTimer(exercise);
+        } else {
+            // إذا كان التمرين بالوقت
+            this.startTimeBasedTimer(exercise);
+        }
+    }
+
+    // نظام العد التلقائي للتكرارات
+    startRepCountingTimer(exercise) {
+        const timerDisplay = document.getElementById('timerDisplay');
+        const timerLabel = document.getElementById('timerLabel');
+        const exerciseEmoji = document.querySelector('.current-exercise .exercise-emoji');
+        
+        timerLabel.textContent = 'اعد مع الإيقاع';
+        
+        let currentRep = 0;
+        const repDuration = 3; // 3 ثواني لكل تكرار
+        let seconds = 0;
+        
+        this.timer = setInterval(() => {
+            seconds++;
+            
+            // كل 3 ثواني = تكرار واحد
+            if (seconds % repDuration === 0) {
+                currentRep++;
+                
+                // تحريك الأيقونة
+                this.animateExerciseIcon(exerciseEmoji);
+                
+                // تحديث العرض
+                timerDisplay.textContent = `${currentRep}/${exercise.reps}`;
+                timerDisplay.style.color = '#4facfe';
+                
+                // صوت أو إشعار للعد
+                this.showRepNotification(currentRep, exercise.reps);
+                
+                // إنهاء المجموعة عند الوصول للعدد المطلوب
+                if (currentRep >= exercise.reps) {
+                    clearInterval(this.timer);
+                    setTimeout(() => {
+                        this.completeSet();
+                    }, 500);
+                    return;
+                }
+            }
+            
+            // حساب السعرات المحروقة
+            this.caloriesBurned += exercise.caloriesPerMinute / 60;
+            this.updateWorkoutStats();
+            
+        }, 1000);
+    }
+
+    // نظام التايمر للتمارين المبنية على الوقت
+    startTimeBasedTimer(exercise) {
+        const timerDisplay = document.getElementById('timerDisplay');
+        const timerLabel = document.getElementById('timerLabel');
+        const exerciseEmoji = document.querySelector('.current-exercise .exercise-emoji');
+        
+        timerLabel.textContent = 'حافظ على الوضعية';
         
         let timeLeft = exercise.duration;
+        
         this.timer = setInterval(() => {
             timerDisplay.textContent = this.formatTime(timeLeft);
+            timerDisplay.style.color = timeLeft <= 10 ? '#ff6b6b' : '#4facfe';
+            
+            // تحريك الأيقونة كل 3 ثواني
+            if (timeLeft % 3 === 0) {
+                this.animateExerciseIcon(exerciseEmoji);
+            }
             
             if (timeLeft <= 0) {
                 clearInterval(this.timer);
@@ -212,6 +281,73 @@ class WorkoutSystem {
             this.updateWorkoutStats();
             
         }, 1000);
+    }
+
+    // تحريك أيقونة التمرين
+    animateExerciseIcon(iconElement) {
+        if (!iconElement) return;
+        
+        iconElement.style.transform = 'scale(1.2)';
+        iconElement.style.transition = 'transform 0.3s ease';
+        
+        setTimeout(() => {
+            iconElement.style.transform = 'scale(1)';
+        }, 300);
+    }
+
+    // إشعار العد
+    showRepNotification(current, total) {
+        const notification = document.createElement('div');
+        notification.className = 'rep-notification';
+        notification.textContent = `${current}`;
+        notification.style.cssText = `
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            font-size: 4rem;
+            font-weight: bold;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            animation: repPulse 0.8s ease-out;
+            box-shadow: 0 10px 30px rgba(79,172,254,0.5);
+        `;
+        
+        // إضافة CSS للحركة
+        if (!document.getElementById('repAnimationStyles')) {
+            const style = document.createElement('style');
+            style.id = 'repAnimationStyles';
+            style.textContent = `
+                @keyframes repPulse {
+                    0% { 
+                        opacity: 0; 
+                        transform: translate(-50%, -50%) scale(0.5); 
+                    }
+                    50% { 
+                        opacity: 1; 
+                        transform: translate(-50%, -50%) scale(1.2); 
+                    }
+                    100% { 
+                        opacity: 0; 
+                        transform: translate(-50%, -50%) scale(1); 
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.remove();
+        }, 800);
     }
 
     // إنهاء المجموعة
@@ -425,6 +561,9 @@ class WorkoutSystem {
         
         // تحديث الإحصائيات في الصفحة الرئيسية
         this.updateMainPageStats();
+        
+        // إشعار الإنجاز
+        this.showNotification('🎉 مبروك! تم حفظ تدريب اليوم بنجاح', 'success');
     }
 
     // تحديث إحصائيات الصفحة الرئيسية
@@ -565,17 +704,20 @@ class WorkoutSystem {
         const caloriesElement = document.getElementById('caloriesBurned');
         const exercisesElement = document.getElementById('exercisesCount');
         
-        if (totalTimeElement) {
+        if (totalTimeElement && this.startTime) {
             const currentTime = Math.floor((new Date() - this.startTime) / 1000);
             totalTimeElement.textContent = this.formatTime(currentTime);
+            totalTimeElement.style.color = '#2d3748';
         }
         
         if (caloriesElement) {
             caloriesElement.textContent = Math.round(this.caloriesBurned);
+            caloriesElement.style.color = '#2d3748';
         }
         
         if (exercisesElement) {
             exercisesElement.textContent = this.exercisesCompleted;
+            exercisesElement.style.color = '#2d3748';
         }
     }
 
