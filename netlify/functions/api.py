@@ -60,6 +60,8 @@ def handler(event, context):
             return get_nutrition(user_id)
         elif method == 'POST' and api_path == 'workout/complete':
             return complete_exercise(data)
+        elif method == 'GET' and api_path == 'exercises':
+            return get_exercises()
         else:
             return {
                 'statusCode': 404,
@@ -335,6 +337,29 @@ def complete_exercise(data):
             })
         }
         
+    except Exception as e:
+        return {
+            'statusCode': 500,
+            'headers': {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+            'body': json.dumps({'success': False, 'error': str(e)})
+        }
+
+def get_exercises():
+    try:
+        return {
+            'statusCode': 200,
+            'headers': {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+            'body': json.dumps({
+                'success': True,
+                'exercises': exercises_data.get('exercises', [])
+            })
+        }
     except Exception as e:
         return {
             'statusCode': 500,
