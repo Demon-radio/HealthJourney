@@ -23,7 +23,6 @@ class WorkoutSystem {
         this.isActive = true;
         this.startTime = new Date();
         this.showWorkoutInterface();
-        this.startCurrentExercise();
         
         // إشعار البداية
         this.showNotification('🚀 بدأ التدريب! حافظ على وتيرة ثابتة', 'success');
@@ -210,7 +209,7 @@ class WorkoutSystem {
             
             // حساب السعرات المحروقة
             this.caloriesBurned += exercise.caloriesPerMinute / 60;
-            this.updateStats();
+            this.updateWorkoutStats();
             
         }, 1000);
     }
@@ -558,6 +557,54 @@ class WorkoutSystem {
             notification.classList.remove('show');
             setTimeout(() => notification.remove(), 300);
         }, 3000);
+    }
+
+    // تحديث إحصائيات التدريب أثناء التمرين
+    updateWorkoutStats() {
+        const totalTimeElement = document.getElementById('totalTime');
+        const caloriesElement = document.getElementById('caloriesBurned');
+        const exercisesElement = document.getElementById('exercisesCount');
+        
+        if (totalTimeElement) {
+            const currentTime = Math.floor((new Date() - this.startTime) / 1000);
+            totalTimeElement.textContent = this.formatTime(currentTime);
+        }
+        
+        if (caloriesElement) {
+            caloriesElement.textContent = Math.round(this.caloriesBurned);
+        }
+        
+        if (exercisesElement) {
+            exercisesElement.textContent = this.exercisesCompleted;
+        }
+    }
+
+    // إعادة تشغيل العد التنازلي
+    restartTimer() {
+        if (this.timer) {
+            clearInterval(this.timer);
+        }
+    }
+
+    // التحقق من حالة التدريب
+    isWorkoutActive() {
+        return this.isActive;
+    }
+
+    // الحصول على التدريب الحالي
+    getCurrentWorkout() {
+        return this.currentWorkout;
+    }
+
+    // إعادة تعيين التدريب
+    resetWorkout() {
+        this.currentWorkout = null;
+        this.currentExercise = 0;
+        this.isActive = false;
+        this.totalTimeSpent = 0;
+        this.caloriesBurned = 0;
+        this.exercisesCompleted = 0;
+        this.restartTimer();
     }
 }
 
