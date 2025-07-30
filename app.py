@@ -106,9 +106,28 @@ def get_profile(user_id):
 @app.route('/api/workout/<user_id>')
 def get_workout(user_id):
     try:
-        # Get or create user
+        # Create demo user if not exists
         if user_id not in users:
-            return jsonify({'success': False, 'error': 'User not found'}), 404
+            users[user_id] = {
+                'user_id': user_id,
+                'firstName': 'مستخدم',
+                'lastName': 'تجريبي',
+                'age': 25,
+                'height': 170,
+                'weight': 70,
+                'gender': 'male',
+                'fitnessLevel': 'beginner',
+                'goal': 'health',
+                'bmi': 24.2,
+                'bmr': 1700
+            }
+            workouts[user_id] = {
+                'current_day': 1,
+                'completed_days': [],
+                'start_date': datetime.now().isoformat(),
+                'total_calories_burned': 0,
+                'streak': 0
+            }
         
         user = users[user_id]
         progress = workouts.get(user_id, {'current_day': 1, 'completed_days': [], 'total_calories_burned': 0, 'streak': 0})
@@ -137,8 +156,14 @@ def get_workout(user_id):
 @app.route('/api/nutrition/<user_id>')
 def get_nutrition(user_id):
     try:
+        # Create demo user if not exists
         if user_id not in users:
-            return jsonify({'success': False, 'error': 'User not found'}), 404
+            users[user_id] = {
+                'user_id': user_id,
+                'economicLevel': 'medium',
+                'goal': 'health',
+                'bmr': 1700
+            }
         
         user = users[user_id]
         economic_level = user.get('economicLevel', 'medium')

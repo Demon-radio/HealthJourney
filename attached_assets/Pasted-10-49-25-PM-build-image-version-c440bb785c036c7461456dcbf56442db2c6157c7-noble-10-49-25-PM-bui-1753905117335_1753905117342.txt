@@ -1,0 +1,35 @@
+10:49:25 PM: build-image version: c440bb785c036c7461456dcbf56442db2c6157c7 (noble)
+10:49:25 PM: buildbot version: c440bb785c036c7461456dcbf56442db2c6157c7
+10:49:25 PM: Fetching cached dependencies
+10:49:26 PM: Failed to fetch cache, continuing with build
+10:49:26 PM: Starting to prepare the repo for build
+10:49:26 PM: No cached dependencies found. Cloning fresh repo
+10:49:26 PM: git clone --filter=blob:none https://github.com/Demon-radio/HealthJourney
+10:49:26 PM: Preparing Git Reference refs/heads/main
+10:49:28 PM: Starting to install dependencies
+10:49:28 PM: Failed during stage 'Install dependencies': dependency_installation script returned non-zero exit code: 1
+10:49:28 PM: mise python@python-3.11 install
+10:49:28 PM: mise WARN  no precompiled python found for python-3.11, force mise to use a precompiled version with `mise settings set python.compile false`
+10:49:28 PM: mise python@python-3.11 python-build
+10:49:28 PM: python-build: definition not found: python-3.11
+10:49:28 PM: mise ERROR ~/.cache/mise/python/pyenv/plugins/python-build/bin/python-build failed
+10:49:28 PM: python-build: definition not found: python-3.11
+10:49:28 PM: mise ERROR Failed to install tool: python@python-3.11
+10:49:28 PM: Individual error details:
+10:49:28 PM:   1. python@python-3.11:
+10:49:28 PM:      Error {
+10:49:28 PM:          msg: "failed to install core:python@python-3.11",
+10:49:28 PM:          source: ScriptFailed(
+10:49:28 PM:              "~/.cache/mise/python/pyenv/plugins/python-build/bin/python-build",
+10:49:28 PM:              Some(
+10:49:28 PM:                  ExitStatus(
+10:49:28 PM:                      unix_wait_status(
+10:49:28 PM:                          512,
+10:49:28 PM:                      ),
+10:49:28 PM:                  ),
+10:49:28 PM:              ),
+10:49:28 PM:          ),
+10:49:28 PM:      }
+10:49:28 PM: mise ERROR Run with --verbose or MISE_VERBOSE=1 for more information
+10:49:28 PM: Error setting python version from 3.13
+10:49:28 PM: Failing build: Failed to install dependencies
