@@ -1144,13 +1144,27 @@
             if (!container) return;
             
             container.innerHTML = exercises.map(exercise => `
-                <div class="exercise-card" data-exercise-id="${exercise.id}">
+                <div class="exercise-card" data-exercise-id="${exercise.id}" style="cursor: pointer; transition: all 0.3s ease;">
                     <span class="exercise-emoji">${exercise.emoji}</span>
                     <div class="exercise-name">${exercise.name}</div>
                     <div class="exercise-details">${exercise.sets} مجموعات × ${exercise.reps} تكرار</div>
-                    <div class="exercise-calories">${exercise.calories_per_rep * exercise.reps * exercise.sets} سعرة حرارية</div>
+                    <div class="exercise-calories">${Math.round(exercise.calories_per_rep * exercise.reps * exercise.sets)} سعرة حرارية</div>
+                    <div class="exercise-category" style="font-size: 0.8rem; color: #666; margin-top: 5px;">${exercise.category}</div>
                 </div>
             `).join('');
+            
+            // إضافة تأثيرات hover
+            container.querySelectorAll('.exercise-card').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-5px)';
+                    card.style.boxShadow = '0 10px 25px rgba(0,0,0,0.2)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0)';
+                    card.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+                });
+            });
         }
         
         function showNotification(title, message, type = 'info') {

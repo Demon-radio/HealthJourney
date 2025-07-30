@@ -196,6 +196,19 @@ def complete_exercise():
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 500
 
+@app.route('/api/exercises')
+def get_exercises():
+    try:
+        with open('data/exercises.json', 'r', encoding='utf-8') as f:
+            exercises_data = json.load(f)
+        
+        return jsonify({
+            'success': True,
+            'exercises': exercises_data.get('exercises', [])
+        })
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
 # Error handlers
 @app.errorhandler(404)
 def not_found(error):
