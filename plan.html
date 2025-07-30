@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>خطة التدريب - Training Club</title>
     <link rel="stylesheet" href="static/css/styles.css">
+    <link rel="stylesheet" href="static/css/workout-timer.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏋️</text></svg>">
     <style>
         /* تنسيقات محسنة للنص الواضح */
@@ -883,52 +884,24 @@
                 تمارين اليوم
             </h2>
             
-            <div class="workout-grid">
-                <div class="exercise-card">
-                    <span class="exercise-emoji">💪</span>
-                    <div class="exercise-name">تمرين الضغط</div>
-                    <div class="exercise-details">3 مجموعات × 12 تكرار</div>
-                </div>
-                
-                <div class="exercise-card">
-                    <span class="exercise-emoji">🦵</span>
-                    <div class="exercise-name">تمرين القرفصاء</div>
-                    <div class="exercise-details">3 مجموعات × 15 تكرار</div>
-                </div>
-                
-                <div class="exercise-card">
-                    <span class="exercise-emoji">🏋️</span>
-                    <div class="exercise-name">تمرين اللوح</div>
-                    <div class="exercise-details">3 مجموعات × 45 ثانية</div>
-                </div>
-                
-                <div class="exercise-card">
-                    <span class="exercise-emoji">🤸</span>
-                    <div class="exercise-name">تمرين الطعن</div>
-                    <div class="exercise-details">3 مجموعات × 10 لكل ساق</div>
-                </div>
-                
-                <div class="exercise-card">
-                    <span class="exercise-emoji">🔥</span>
-                    <div class="exercise-name">تمرين بيربي</div>
-                    <div class="exercise-details">3 مجموعات × 8 تكرار</div>
-                </div>
-                
-                <div class="exercise-card">
-                    <span class="exercise-emoji">🏃</span>
-                    <div class="exercise-name">تسلق الجبال</div>
-                    <div class="exercise-details">3 مجموعات × 30 ثانية</div>
-                </div>
+            <div class="workout-grid" id="workout-exercises">
+                <!-- سيتم تحميل التمارين من البيانات الجديدة -->
             </div>
             
             <div style="text-align: center; margin-top: 30px;">
-                <button class="btn btn-large" onclick="workoutSystem.startWorkout()">
-                    🚀 ابدأ التمرين الآن
-                </button>
                 <button class="btn btn-large" onclick="showWorkoutHistory()" style="margin-right: 15px; background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);">
                     📊 تاريخ التدريبات
                 </button>
             </div>
+        </div>
+        
+        <!-- قسم المؤقت التفاعلي -->
+        <div class="section workout-section">
+            <h2 class="section-title">
+                <span class="section-emoji">⏱️</span>
+                نظام التدريب التفاعلي
+            </h2>
+            <!-- سيتم إدراج المؤقت هنا تلقائياً -->
         </div>
 
         <!-- قسم التغذية -->
@@ -1148,8 +1121,62 @@
             return 'سمنة - يحتاج برنامج خاص';
         }
         
+        // تحميل التمارين
+        async function loadExercises() {
+            try {
+                const response = await fetch('/api/exercises');
+                const data = await response.json();
+                
+                if (data.success && data.exercises) {
+                    window.AppState = window.AppState || {};
+                    window.AppState.workoutData = { exercises: data.exercises };
+                    window.AppState.showNotification = showNotification;
+                    
+                    displayExercises(data.exercises.slice(0, 6)); // عرض أول 6 تمارين
+                }
+            } catch (error) {
+                console.error('خطأ في تحميل التمارين:', error);
+            }
+        }
+        
+        function displayExercises(exercises) {
+            const container = document.getElementById('workout-exercises');
+            if (!container) return;
+            
+            container.innerHTML = exercises.map(exercise => `
+                <div class="exercise-card" data-exercise-id="${exercise.id}">
+                    <span class="exercise-emoji">${exercise.emoji}</span>
+                    <div class="exercise-name">${exercise.name}</div>
+                    <div class="exercise-details">${exercise.sets} مجموعات × ${exercise.reps} تكرار</div>
+                    <div class="exercise-calories">${exercise.calories_per_rep * exercise.reps * exercise.sets} سعرة حرارية</div>
+                </div>
+            `).join('');
+        }
+        
+        function showNotification(title, message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `workout-notification ${type}`;
+            notification.innerHTML = `
+                <div style="font-weight: bold; margin-bottom: 5px;">${title}</div>
+                <div>${message}</div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => notification.classList.add('show'), 100);
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => document.body.removeChild(notification), 300);
+            }, 4000);
+        }
+        
         // تحديث البيانات عند تحميل الصفحة
-        document.addEventListener('DOMContentLoaded', updateUserData);
+        document.addEventListener('DOMContentLoaded', () => {
+            updateUserData();
+            loadExercises();
+        });
     </script>
+    <script src="static/js/workout-timer.js"></script>
 </body>
 </html>
